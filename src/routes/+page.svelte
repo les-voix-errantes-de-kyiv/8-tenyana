@@ -1,11 +1,22 @@
 <script lang="ts">
     import {createScene} from "$lib/three";
+    import {loadModel, placeModel} from "$lib/functions";
     import {onMount} from "svelte";
+    import type {GLTF} from "three/examples/jsm/loaders/GLTFLoader.js";
 
     let canvas;
 
     onMount(() => {
         createScene(canvas)
+        loadModel('/assets/Avion.glb').then((model: GLTF) => {
+            placeModel(model)
+        })
+        loadModel('/assets/Island.glb').then((model: GLTF) => {
+            placeModel(model)
+        })
+        loadModel('/assets/scene.glb').then((model: GLTF) => {
+            placeModel(model)
+        })
     })
 </script>
 
