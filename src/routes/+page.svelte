@@ -49,6 +49,10 @@
     }
     button {
         position: absolute;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 40px;
         bottom: 40px;
         transform: translateX(-50%);
         background-color: transparent;
