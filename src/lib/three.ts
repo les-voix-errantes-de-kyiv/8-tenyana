@@ -1,8 +1,9 @@
 import { WebGLRenderer } from 'three';
 import { sceneStore, cameraStore, boxStore } from '$lib/stores';
 import { get } from 'svelte/store';
-import { initObjectScene, resize } from '$lib/functions';
+import { initObjectScene, makeGroup, resize } from '$lib/functions';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
+import { addDebug } from '$lib/guiDebug';
 
 const scene = get(sceneStore);
 const camera = get(cameraStore);
@@ -26,6 +27,8 @@ export const createScene = (el: HTMLCanvasElement) => {
 	resize(renderer);
 	animate();
 	initObjectScene();
+	makeGroup();
+	// addDebug();
 };
 
 window.addEventListener('resize', () => resize(renderer));
