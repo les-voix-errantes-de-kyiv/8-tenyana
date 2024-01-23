@@ -17,7 +17,8 @@ function animate() {
 }
 
 export const createScene = (el: HTMLCanvasElement) => {
-	renderer = new WebGLRenderer({ antialias: true, canvas: el });
+	renderer = new WebGLRenderer({ antialias: true, canvas: el, alpha: true });
+	renderer.setClearColor(0x000000, 0);
 	renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 	controls = new OrbitControls(camera, renderer.domElement);
 	controls.enableDamping = true;
