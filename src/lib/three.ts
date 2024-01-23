@@ -3,7 +3,7 @@ import { sceneStore, cameraStore, boxStore } from '$lib/stores';
 import { get } from 'svelte/store';
 import { initObjectScene, makeGroup, resize } from '$lib/functions';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
-import { addDebug } from '$lib/guiDebug';
+// import { addDebug } from '$lib/guiDebug';
 
 const scene = get(sceneStore);
 const camera = get(cameraStore);

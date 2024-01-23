@@ -10,8 +10,16 @@
     } from "$lib/functions";
     import {onMount} from "svelte";
     import type {GLTF} from "three/examples/jsm/loaders/GLTFLoader.js";
+    // import {currentSceneIndexStore, scenesContentStore} from "$lib/stores";
 
     let canvas;
+    // let currentSceneIndex;
+
+    //Subscribe currentSceneIndex for display content
+    // const unsubscribe = currentSceneIndexStore.subscribe((index) => {
+    //     currentSceneIndex = index
+    // });
+
 
     onMount(() => {
         createScene(canvas)
@@ -27,7 +35,6 @@
 
     })
 </script>
-
 <canvas id="three" bind:this={canvas}></canvas>
 <div class="buttons">
     <button on:click={() => unRotateScene()}>

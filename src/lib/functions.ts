@@ -7,7 +7,9 @@ import {
 	planeMeshStore,
 	islandMeshStore,
 	sceneMeshStore,
-	islandAndSceneGroupStore
+	islandAndSceneGroupStore,
+	scenesContentStore,
+	currentSceneIndexStore
 } from '$lib/stores';
 import { get } from 'svelte/store';
 import type { GLTF } from 'three/examples/jsm/loaders/GLTFLoader.js';
@@ -18,10 +20,11 @@ const ambientLight = get(ambientLightStore);
 const islandMesh = get(islandMeshStore);
 const sceneMesh = get(sceneMeshStore);
 const islandAndSceneGroup = get(islandAndSceneGroupStore);
+const sceneContent = get(scenesContentStore);
 
 export const initCameraScene = () => {
-    camera.position.set(40, 15, 0);
-}
+	camera.position.set(40, 15, 0);
+};
 
 export function resize(renderer: WebGLRenderer) {
 	renderer.setSize(window.innerWidth, window.innerHeight);
@@ -65,10 +68,31 @@ export function makeGroup() {
 export function rotateScene() {
 	islandAndSceneGroup.rotation.y = Math.PI * 0.25 + islandAndSceneGroup.rotation.y;
 	initCameraScene();
+	onPressRight();
 	camera.lookAt(islandMesh.position);
 }
 export function unRotateScene() {
 	islandAndSceneGroup.rotation.y = Math.PI * -0.25 + islandAndSceneGroup.rotation.y;
 	initCameraScene();
 	camera.lookAt(islandMesh.position);
+	onPressLeft();
+}
+
+function onPressRight() {
+	const currentSceneIndex = get(currentSceneIndexStore);
+
+	if (currentSceneIndex === sceneContent.length - 1) {
+		currentSceneIndexStore.set(0);
+		return;
+	}
+	currentSceneIndexStore.update((index) => index + 1);
+}
+
+function onPressLeft() {
+	const currentSceneIndex = get(currentSceneIndexStore);
+	if (currentSceneIndex === 0) {
+		currentSceneIndexStore.set(sceneContent.length - 1);
+		return;
+	}
+	currentSceneIndexStore.update((index) => index - 1);
 }
