@@ -1,0 +1,17 @@
+@import 'colors';
+
+.container{
+  display: flex;
+  justify-content: space-between;
+  .item{
+    height: 10px;
+    width: 10px;
+    border-radius: 100%;
+  }
+  .selectedItem{
+    background-color: $color-blue
+  }
+  .otherItem{
+    background-color: $color-gray
+  }
+}

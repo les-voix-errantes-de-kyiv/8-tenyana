@@ -6,8 +6,6 @@
         placeIslandModel,
         placePlaneModel,
         placeSceneModel,
-        rotateScene,
-        unRotateScene,
         zoomCamera
     } from "$lib/functions";
     import {onMount} from "svelte";
@@ -15,7 +13,6 @@
     import '$lib/styles/colors.scss';
     import '$lib/styles/fonts.scss';
     import '$lib/styles/style.scss';
-    // import {currentSceneIndexStore, scenesContentStore} from "$lib/stores";
     import Card from "$lib/components/Card.svelte";
 
     let canvas;
@@ -49,10 +46,3 @@
         <Card />
     {/if}
 </div>
-
-<style>
-    .background{
-        background: rgb(66,113,203);
-        background: linear-gradient(180deg, rgba(66,113,203,1) 0%, rgba(144,157,225,1) 22%, rgba(240,218,231,1) 62%, rgba(252,250,236,1) 100%);
-    }
-</style>

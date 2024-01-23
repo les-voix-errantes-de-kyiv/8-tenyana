@@ -2,6 +2,8 @@
     import {currentSceneIndexStore, scenesContentStore} from "$lib/stores";
     import {get} from "svelte/store";
     import {rotateScene, unRotateScene} from "$lib/functions";
+    import '$lib/styles/card.scss';
+    import Pagination from "$lib/components/Pagination.svelte";
 
     let currentSceneIndex;
     const scenesContent = get(scenesContentStore)
@@ -13,9 +15,10 @@
     });
 </script>
 
-<div>
-    <h3>{content.title}</h3>
-    <p>{content.subTitle}</p>
+<div class="component">
+    <h3 class="text title">{content.title}</h3>
+    <Pagination currentIndex={currentSceneIndex}/>
+    <p class="text subTitle">{content.subTitle}</p>
     <div class="buttons">
         <button on:click={() => unRotateScene()}>
             <svg class="before-button-svg" width="20" height="16" viewBox="0 0 20 16" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -29,40 +32,3 @@
         </button>
     </div>
 </div>
-
-<style>
-    .buttons {
-        position: relative;
-        display: flex;
-        justify-content: center;
-        width: 100%;
-        gap: 10px;
-    }
-    button {
-        position: absolute;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 40px;
-        bottom: 40px;
-        transform: translateX(-50%);
-        background-color: transparent;
-        color: white;
-        border: 1px solid white;
-        padding: 10px;
-        cursor: pointer;
-    }
-    button:hover {
-        background-color: white;
-        color: black;
-    }
-    button:first-child {
-        left: 45%;
-    }
-    button:last-child {
-        left: 55%;
-    }
-    .after-button-svg {
-        transform: rotate(180deg);
-    }
-</style>
