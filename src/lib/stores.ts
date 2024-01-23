@@ -6,11 +6,11 @@ import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 export const sceneStore = writable(new Scene());
 export const cameraStore = writable(
 	new PerspectiveCamera(
-		45,
+		75,
 		typeof window !== 'undefined' ? window.innerWidth / window.innerHeight : 0,
 		1,
 		1000
-	)
+	),
 );
 export const boxStore = writable(new Mesh(geometryBox, material));
 export const ambientLightStore = writable(new AmbientLight(0xffffff));

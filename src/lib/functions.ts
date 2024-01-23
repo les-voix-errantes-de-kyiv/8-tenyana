@@ -1,4 +1,4 @@
-import type { WebGLRenderer } from 'three';
+import { PerspectiveCamera, type WebGLRenderer } from 'three';
 import {
 	sceneStore,
 	cameraStore,
@@ -19,6 +19,10 @@ const islandMesh = get(islandMeshStore);
 const sceneMesh = get(sceneMeshStore);
 const islandAndSceneGroup = get(islandAndSceneGroupStore);
 
+export const initCameraScene = () => {
+    camera.position.set(40, 15, 0);
+}
+
 export function resize(renderer: WebGLRenderer) {
 	renderer.setSize(window.innerWidth, window.innerHeight);
 	camera.aspect = window.innerWidth / window.innerHeight;
@@ -27,7 +31,7 @@ export function resize(renderer: WebGLRenderer) {
 
 export function initObjectScene() {
 	scene.add(ambientLight);
-	camera.position.z = 30;
+	initCameraScene();
 }
 
 export function placePlaneModel(model: GLTF) {
@@ -60,7 +64,11 @@ export function makeGroup() {
 
 export function rotateScene() {
 	islandAndSceneGroup.rotation.y = Math.PI * 0.25 + islandAndSceneGroup.rotation.y;
+	initCameraScene();
+	camera.lookAt(islandMesh.position);
 }
 export function unRotateScene() {
 	islandAndSceneGroup.rotation.y = Math.PI * -0.25 + islandAndSceneGroup.rotation.y;
+	initCameraScene();
+	camera.lookAt(islandMesh.position);
 }
