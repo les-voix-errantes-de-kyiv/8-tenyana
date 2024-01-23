@@ -1,12 +1,14 @@
 <script lang="ts">
     import {createScene} from "$lib/three";
+    import Title from "$lib/components/Title.svelte";
     import {
         loadModel,
         placeIslandModel,
         placePlaneModel,
         placeSceneModel,
         rotateScene,
-        unRotateScene
+        unRotateScene,
+        zoomCamera
     } from "$lib/functions";
     import {onMount} from "svelte";
     import type {GLTF} from "three/examples/jsm/loaders/GLTFLoader.js";
@@ -14,15 +16,16 @@
     import '$lib/styles/fonts.scss';
     import '$lib/styles/style.scss';
     // import {currentSceneIndexStore, scenesContentStore} from "$lib/stores";
+    import Card from "$lib/components/Card.svelte";
 
     let canvas;
-    // let currentSceneIndex;
+    let isHomePage = true;
 
-    //Subscribe currentSceneIndex for display content
-    // const unsubscribe = currentSceneIndexStore.subscribe((index) => {
-    //     currentSceneIndex = index
-    // });
 
+    function startExperience(){
+        isHomePage = false
+        zoomCamera()
+    }
 
     onMount(() => {
         createScene(canvas)
@@ -35,21 +38,21 @@
         loadModel('/assets/scene.glb').then((scene: GLTF) => {
             placeSceneModel(scene)
         })
-
     })
 </script>
 <div class="background">
+    <Title isHomePage={isHomePage}/>
     <canvas id="three" bind:this={canvas}></canvas>
-    <div class="buttons">
-        <button on:click={() => unRotateScene()}>
-            <svg class="before-button-svg" width="20" height="16" viewBox="0 0 20 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M8 15L1 8M1 8L8 1M1 8L19 8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-        </button>
-        <button on:click={() => rotateScene()}>
-            <svg class="after-button-svg" width="20" height="16" viewBox="0 0 20 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M8 15L1 8M1 8L8 1M1 8L19 8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-        </button>
-    </div>
+    {#if isHomePage}
+        <button on:click={() => startExperience()}>Démarer l'expérience</button>
+    {:else }
+        <Card />
+    {/if}
 </div>
+
+<style>
+    .background{
+        background: rgb(66,113,203);
+        background: linear-gradient(180deg, rgba(66,113,203,1) 0%, rgba(144,157,225,1) 22%, rgba(240,218,231,1) 62%, rgba(252,250,236,1) 100%);
+    }
+</style>

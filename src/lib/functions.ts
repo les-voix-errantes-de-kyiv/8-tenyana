@@ -21,15 +21,15 @@ const islandMesh = get(islandMeshStore);
 const sceneMesh = get(sceneMeshStore);
 const islandAndSceneGroup = get(islandAndSceneGroupStore);
 const sceneContent = get(scenesContentStore);
-const planeMESH = get(planeMeshStore);
 
 export const initCameraScene = () => {
 	camera.position.set(32, 13, -3);
-	camera.lookAt(planeMESH.position);
+	camera.lookAt(islandMesh.position);
 };
 
-function zoomCamera() {
+export function zoomCamera() {
 	camera.position.set(25, 8.8, 0);
+	camera.lookAt(islandMesh.position);
 }
 
 export function resize(renderer: WebGLRenderer) {
