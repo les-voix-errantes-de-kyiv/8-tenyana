@@ -1,0 +1,55 @@
+/**
+ * --------------------------------------------------------------------------------------------------------------
+ *                                                  DEDICATED VARIABLES 
+/**/
+
+// -------------- * Primary colors * --------------
+
+$color-white   : #FFFFFF;
+$color-black   : #000000;
+$color-lightblue : #909DE1;
+$color-blue : #4472CB;
+
+$color-primary : $color-black;
+$color-text    : $color-black;
+
+/**
+ * --------------------------------------------------------------------------------------------------------------
+ *                                                  DEDICATED FUNCTIONS 
+/**/
+
+// -------------- * Create Class Names * --------------
+
+@each $color-name, $color-value in (
+  primary: $color-primary,
+  white: $color-white,
+  black: $color-black,
+  lightblue: $color-lightblue,
+  blue: $color-blue
+) {
+
+  // -------------- * Color classes * --------------
+  .color-#{$color-name} {
+    color: $color-value !important;
+  }
+
+  // -------------- * Background classes * --------------
+  .bkg-#{$color-name} {
+    background-color: $color-value !important;
+  }
+
+  // -------------- * SVG classes * --------------
+  .fill-#{$color-name} {
+    > svg * { fill: $color-value !important; }
+  }
+}
+
+// -------------- * Background * --------------
+
+@mixin bkg-color($bkg-color) {
+  background-color: $bkg-color;
+}
+
+%bkg-filter {
+  backdrop-filter: brightness(0.9);
+}

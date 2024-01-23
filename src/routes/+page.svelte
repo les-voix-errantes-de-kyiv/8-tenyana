@@ -10,6 +10,9 @@
     } from "$lib/functions";
     import {onMount} from "svelte";
     import type {GLTF} from "three/examples/jsm/loaders/GLTFLoader.js";
+    import '../lib/styles/colors.scss';
+    import '../lib/styles/fonts.scss';
+    import '../lib/styles/style.scss';
     // import {currentSceneIndexStore, scenesContentStore} from "$lib/stores";
 
     let canvas;
@@ -35,6 +38,7 @@
 
     })
 </script>
+<h1>Lorem Ipsum</h1>
 <canvas id="three" bind:this={canvas}></canvas>
 <div class="buttons">
     <button on:click={() => unRotateScene()}>

@@ -1,0 +1,319 @@
+/**
+ * --------------------------------------------------------------------------------------------------------------
+ *                                                  DEDICATED VARIABLES 
+/**/
+
+// ------------- * Main Font library * -------------
+
+@font-face {
+    font-family: "LexendDeca-Regular";
+    src: url('fonts/lexend-deca-font-family/LexendDeca-Regular.ttf') format('truetype');
+    font-display: swap;
+    font-weight: 400;
+    font-style: normal;
+  }
+  
+  @font-face {
+    font-family: "LexendDeca-Medium";
+    src: url('fonts/lexend-deca-font-family/LexendDeca-Medium.ttf') format('truetype');
+    font-display: swap;
+    font-weight: 500;
+    font-style: normal;
+  }
+  
+  @font-face {
+    font-family: "LexendDeca-SemiBold";
+    src: url('fonts/lexend-deca-font-family/LexendDeca-SemiBold.ttf') format('truetype');
+    font-display: swap;
+    font-weight: 600;
+    font-style: normal;
+  }
+  
+  // ------------- * Main Font library * -------------
+  
+  $font-main-Regular  : "LexendDeca-Regular";
+  $font-main-Medium   : "LexendDeca-Medium";
+  $font-main-SemiBold   : "LexendDeca-SemiBold";
+  $font-main-Bold   : "LexendDeca-Bold";
+
+  /**
+ * --------------------------------------------------------------------------------------------------------------
+ *                                                  DEDICATED VARIABLES 
+/**/
+
+// ------------- * Devices Min / Max Screen Width * -------------
+
+// Screens variables breakpoints (used with "px-to-rem" or "ptr" functions)
+$default-vw-widths: (
+    mobile: 393,
+    tablet: 820,
+    desktop: 1920,
+);
+
+$breakpoints: (
+    mobile: 0,
+    tablet: 768,
+    desktop: 1024,
+);
+
+// Smartphones mini (portrait view)
+$max-smartphone-mini: 318px;
+
+// Smartphones (portrait view)
+$min-smartphone: 319px;
+$max-smartphone: 575px;
+
+// Small tablets and large smartphones (landscape view)
+$min-smartphone-landscape: 576px;
+$max-smartphone-landscape: 767px;
+
+// Small tablets (portrait view)
+$min-tablet: 768px;
+$max-tablet: 991px;
+
+// Tablets (landscape view) and small desktops
+$min-tablet-landscape: 992px;
+$max-tablet-landscape: 1199px;
+
+// Large tablets and desktops (burger menu)
+$min-desktop-burger: 1200px;
+$max-desktop-burger: 1360px;
+
+// Desktops (no burger menu)
+$min-desktop-no-burger: 1361px;
+  
+
+  /**
+   * --------------------------------------------------------------------------------------------------------------
+   *                                                  DEDICATED FUNCTIONS 
+  /**/
+    
+  // ------------- * Breakpoints * -------------
+
+  // All breakpoints function (non utilisée encore)
+@mixin respond-to($breakpoint) {
+    @if map-has-key($breakpoints, $breakpoint) {
+        @media (min-width: #{map-get($breakpoints, $breakpoint) * 1px}) {
+        @content;
+        }
+    } @else {
+        @error "Unknown breakpoint: #{$breakpoint}.";
+    }
+}
+
+// Smartphones mini (portrait view)
+@mixin end-smartphone-maxi {
+    @media (max-width: #{$max-smartphone-mini}) {
+        @content;
+    }
+}
+
+// Smartphones (portrait view)
+@mixin start-smartphone {
+    @media (min-width: #{$min-smartphone}) {
+        @content;
+    }
+}
+@mixin end-smartphone {
+    @media (max-width: #{$max-smartphone}) {
+        @content;
+    }
+}
+ 
+// Small tablets and large smartphones (landscape view)
+@mixin start-smartphone-landscape {
+    @media (min-width: #{$min-smartphone-landscape}) {
+        @content;
+    }
+}
+@mixin end-smartphone-landscape {
+    @media (max-width: #{$max-smartphone-landscape}) {
+        @content;
+    }
+}
+
+// Small tablets (portrait view)
+@mixin start-tablet {
+    @media (min-width: #{$min-tablet}) {
+        @content;
+    }
+}
+@mixin end-tablet {
+    @media (max-width: #{$max-tablet}) {
+        @content;
+    }
+}
+
+// Tablets and small desktops
+@mixin start-tablet-landscape {
+    @media (min-width: #{$min-tablet-landscape}) {
+        @content;
+    }
+}
+@mixin end-tablet-landscape {
+    @media (max-width: #{$max-tablet-landscape}) {
+        @content;
+    }
+}
+
+// Large tablets and desktops (burger menu)
+@mixin start-desktop-burger {
+    @media (min-width: #{$min-desktop-burger}) {
+        @content;
+    }
+}
+@mixin end-desktop-burger {
+    @media (max-width: #{$max-desktop-burger}) {
+        @content;
+    }
+}
+
+// Desktops (no burger menu)
+@mixin start-desktop-no-burger {
+    @media (min-width: #{$min-desktop-no-burger}) {
+        @content;
+    }
+}
+  
+  // ------------- * Font Sizes * -------------
+  
+  // Global referent Font Size quotient
+  $font-size-quotient: 1;
+  
+  // Font Size Function 
+  @function pixelsCalc($pxSize) {
+    @return ($pxSize * $font-size-quotient) + px; 
+  }
+  
+  // Font Size Function  pixel to Rem
+  @function pxToRem($pxSize) {
+    @return $pxSize / 10 + rem; // standard size: 10px
+  }
+  
+  /* Font Size Function to create classes 
+  ex :
+  .font-size-10 {
+    font-size: 1rem;
+  }*/
+  @mixin font-size() {
+    $font-size-list: 10 12 14 16 20 24;
+    @each $value in $font-size-list {
+      .font-size-#{$value} {
+        font-size: pxToRem($value);
+      }
+    }
+  }
+  @include font-size();
+  
+  /**
+   * --------------------------------------------------------------------------------------------------------------
+   *                                                  DEDICATED CLASSES & EXTENDS 
+   *                                           Allways create both in order to be forced 
+   *                                       directly on DOM or afterward in SCCS with @extend !
+  /**/
+  
+  .bold,
+  %bold {
+    font-weight: bold;
+  }
+  
+  .opacity-90,
+  %opacity-80 {
+    opacity: 0.8;
+  }
+  
+  .opacity-80,
+  %opacity-80 {
+    opacity: 0.8;
+  }
+  
+  .opacity-70,
+  %opacity-70 {
+    opacity: 0.7;
+  }
+  
+  .opacity-50,
+  %opacity-50 {
+    opacity: 0.5;
+  }
+  
+  .text-left,
+  %text-left {
+    text-align: left;
+  }
+  
+  .text-center,
+  %text-center {
+    text-align: center;
+  }
+  
+  .uppercase,
+  %uppercase {
+    text-transform: uppercase;
+  }
+  
+  .capitalize {
+    text-transform: capitalize;
+  }
+  
+  /**
+   * --------------------------------------------------------------------------------------------------------------
+   *                                                  ELEMENTS APPLICATIONS
+  /**/
+  
+  // -------------- * Primary Font Families * --------------
+  
+  h1{
+    font-family: $font-main-Medium;
+    font-weight: 500;
+  }
+  
+  * {
+    font-family: $font-main-Regular;
+    font-weight: 400;
+    margin: 0;
+  }
+  
+  // -------------- * Font Sizes * --------------
+  
+  h1 {
+    font-size: pixelsCalc(60);
+    line-height: pixelsCalc(65);
+    @include end-tablet {
+      font-size: pixelsCalc(32);
+    }
+  }
+
+  h2 {
+    font-size: pixelsCalc(35);
+    line-height: pixelsCalc(40);
+    @include end-tablet {
+      font-size: pixelsCalc(20);
+    }
+  }
+
+  p {
+    font-size: pixelsCalc(16);
+    line-height: pixelsCalc(21);
+    @include end-tablet {
+      font-size: pixelsCalc(16);
+    }
+  }
+
+  a {
+    font-size: pixelsCalc(18);
+    line-height: pixelsCalc(23);
+    @include end-tablet {
+      font-size: pixelsCalc(16);
+      line-height: pixelsCalc(26);
+    }
+  }
+
+  button {
+    font-size: pixelsCalc(18);
+    line-height: pixelsCalc(23);
+    @include end-tablet {
+      font-size: pixelsCalc(16);
+      line-height: pixelsCalc(18);
+    }
+  }
