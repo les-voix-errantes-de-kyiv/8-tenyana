@@ -10,9 +10,9 @@
     } from "$lib/functions";
     import {onMount} from "svelte";
     import type {GLTF} from "three/examples/jsm/loaders/GLTFLoader.js";
-    import '../lib/styles/colors.scss';
-    import '../lib/styles/fonts.scss';
-    import '../lib/styles/style.scss';
+    import '$lib/styles/colors.scss';
+    import '$lib/styles/fonts.scss';
+    import '$lib/styles/style.scss';
     // import {currentSceneIndexStore, scenesContentStore} from "$lib/stores";
 
     let canvas;
@@ -53,44 +53,3 @@
         </button>
     </div>
 </div>
-
-<style>
-    .buttons {
-        position: relative;
-        display: flex;
-        justify-content: center;
-        width: 100%;
-        gap: 10px;
-    }
-    button {
-        position: absolute;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 40px;
-        bottom: 40px;
-        transform: translateX(-50%);
-        background-color: transparent;
-        color: white;
-        border: 1px solid white;
-        padding: 10px;
-        cursor: pointer;
-    }
-    button:hover {
-        background-color: white;
-        color: black;
-    }
-    button:first-child {
-        left: 45%;
-    }
-    button:last-child {
-        left: 55%;
-    }
-    .after-button-svg {
-        transform: rotate(180deg);
-    }
-    .background{
-        background: rgb(66,113,203);
-        background: linear-gradient(180deg, rgba(66,113,203,1) 0%, rgba(144,157,225,1) 22%, rgba(240,218,231,1) 62%, rgba(252,250,236,1) 100%);
-    }
-</style>
