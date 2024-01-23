@@ -17,10 +17,11 @@ export const islandAndSceneGroupStore = writable(new Group());
 export const planeMeshStore = writable(new Mesh());
 export const islandMeshStore = writable(new Mesh());
 export const sceneMeshStore = writable(new Mesh());
-export const scenesContentStore = readable<{ title: string }[]>([
-	{ title: 'scene 1' },
-	{ title: 'scene 2' },
-	{ title: 'scene 3' },
-	{ title: 'scene 4' }
+export const scenesContentStore = readable<{ title: string; subTitle: string }[]>([
+	{ title: 'Urkraine', subTitle: 'Le calme avant...' },
+	{ title: 'scene 2', subTitle: 'Le calme avant...' },
+	{ title: 'scene 3', subTitle: 'Le calme avant...' },
+	{ title: 'scene 4', subTitle: 'Le calme avant...' },
+	{ title: 'scene 5', subTitle: 'Le calme avant...' }
 ]);
 export const currentSceneIndexStore = writable(0);
