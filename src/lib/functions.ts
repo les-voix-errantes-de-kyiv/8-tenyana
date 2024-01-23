@@ -1,4 +1,4 @@
-import { PerspectiveCamera, type WebGLRenderer } from 'three';
+import { type WebGLRenderer } from 'three';
 import {
 	sceneStore,
 	cameraStore,
@@ -21,10 +21,16 @@ const islandMesh = get(islandMeshStore);
 const sceneMesh = get(sceneMeshStore);
 const islandAndSceneGroup = get(islandAndSceneGroupStore);
 const sceneContent = get(scenesContentStore);
+const planeMESH = get(planeMeshStore);
 
 export const initCameraScene = () => {
-	camera.position.set(40, 15, 0);
+	camera.position.set(32, 13, -3);
+	camera.lookAt(planeMESH.position);
 };
+
+function zoomCamera() {
+	camera.position.set(25, 8.8, 0);
+}
 
 export function resize(renderer: WebGLRenderer) {
 	renderer.setSize(window.innerWidth, window.innerHeight);
@@ -67,13 +73,13 @@ export function makeGroup() {
 
 export function rotateScene() {
 	islandAndSceneGroup.rotation.y = Math.PI * 0.25 + islandAndSceneGroup.rotation.y;
-	initCameraScene();
+	zoomCamera();
 	onPressRight();
 	camera.lookAt(islandMesh.position);
 }
 export function unRotateScene() {
 	islandAndSceneGroup.rotation.y = Math.PI * -0.25 + islandAndSceneGroup.rotation.y;
-	initCameraScene();
+	zoomCamera();
 	camera.lookAt(islandMesh.position);
 	onPressLeft();
 }
