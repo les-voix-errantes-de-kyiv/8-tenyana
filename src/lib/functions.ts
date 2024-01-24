@@ -6,14 +6,14 @@ import {
 	gltfLoaderStore,
 	planeMeshStore,
 	islandMeshStore,
-	sceneMeshStore,
 	islandAndSceneGroupStore,
 	scenesContentStore,
 	currentSceneIndexStore,
 	plateformeMeshStore1,
 	plateformeMeshStore2,
 	plateformeMeshStore3,
-	plateformeMeshStore4
+	plateformeMeshStore4,
+	spotLightStore
 } from '$lib/stores';
 import { get } from 'svelte/store';
 import type { GLTF } from 'three/examples/jsm/loaders/GLTFLoader.js';
@@ -22,12 +22,12 @@ import gsap from 'gsap';
 const scene = get(sceneStore);
 const camera = get(cameraStore);
 const ambientLight = get(ambientLightStore);
+const spotLight = get(spotLightStore);
 const islandMesh = get(islandMeshStore);
 const plateformeMesh1 = get(plateformeMeshStore1);
 const plateformeMesh2 = get(plateformeMeshStore2);
 const plateformeMesh3 = get(plateformeMeshStore3);
 const plateformeMesh4 = get(plateformeMeshStore4);
-const sceneMesh = get(sceneMeshStore);
 const islandAndSceneGroup = get(islandAndSceneGroupStore);
 const sceneContent = get(scenesContentStore);
 
@@ -49,6 +49,7 @@ export function resize(renderer: WebGLRenderer) {
 
 export function initObjectScene() {
 	scene.add(ambientLight);
+	scene.add(spotLight);
 	initCameraScene();
 }
 
