@@ -1,0 +1,53 @@
+@import 'colors';
+
+.component{
+  background-color: $color-white;
+  padding: 20px;
+  .text{
+    color: $color-blue;
+    text-transform: uppercase;
+  }
+  .subTitle{
+    text-decoration: underline;
+  }
+  .buttons {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    gap: 10px;
+
+    button {
+      position: absolute;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 40px;
+      bottom: 40px;
+      transform: translateX(-50%);
+      background-color: transparent;
+      color: white;
+      border: 1px solid white;
+      padding: 10px;
+      cursor: pointer;
+
+      &:hover {
+        background-color: white;
+        color: black;
+      }
+
+      &:first-child {
+        left: 45%;
+      }
+
+      &:last-child {
+        left: 55%;
+        .after-button-svg {
+          transform: rotate(180deg);
+        }
+      }
+    }
+  }
+
+}
+

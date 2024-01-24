@@ -18,7 +18,7 @@ export const planeMeshStore = writable(new Mesh());
 export const islandMeshStore = writable(new Mesh());
 export const sceneMeshStore = writable(new Mesh());
 export const scenesContentStore = readable<{ title: string; subTitle: string }[]>([
-	{ title: 'Urkraine', subTitle: 'Le calme avant...' },
+	{ title: 'Ukraine', subTitle: 'Le calme avant...' },
 	{ title: 'scene 2', subTitle: 'Le calme avant...' },
 	{ title: 'scene 3', subTitle: 'Le calme avant...' },
 	{ title: 'scene 4', subTitle: 'Le calme avant...' },
