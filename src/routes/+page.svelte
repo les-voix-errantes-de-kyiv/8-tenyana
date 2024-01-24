@@ -19,6 +19,7 @@
     import Card from "$lib/components/Card.svelte";
     import PrimaryButton from "$lib/components/PrimaryButton.svelte";
 
+
     let canvas;
     let isHomePage = true;
 

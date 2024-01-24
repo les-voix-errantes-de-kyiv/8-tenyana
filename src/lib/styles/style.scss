@@ -5,10 +5,10 @@
     display: flex;
     justify-content: center;
     background: rgb(66,113,203);
-    background: linear-gradient(180deg, rgba(66,113,203,1) 0%, rgba(144,157,225,1) 22%, rgba(240,218,231,1) 62%, rgba(252,250,236,1) 100%);
+    background: linear-gradient(180deg, $color-blue 0%, $color-lightblue 22%, $color-pink 62%, $color-offwhite 100%);
     position: relative;
     z-index: 1;
-    max-height: 100vh;
+    min-height: 100vh;
     .title{
         position: absolute;
         top: 80px;
@@ -48,5 +48,23 @@
     }
 }
 
-
-
+.about{
+    overflow: hidden;
+    flex-direction: column;
+    background: linear-gradient(180deg, $color-blue 0%, $color-lightblue 50%, $color-pink 80%, $color-offwhite 100%);
+    .text {
+        color: $color-white;
+        padding: 100px 24px 0;
+        h2 {
+            text-align: center;
+        }
+        p {
+            padding: 24px 0 48px;
+        }
+    }
+    .card {
+        position: unset;
+        transform: rotate(-4deg);
+        padding-top: 24px;
+    }
+}
