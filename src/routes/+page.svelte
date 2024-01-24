@@ -63,7 +63,7 @@
                 <label>Soutenir</label>
             </a>
             <label>-</label>
-            <a href="/">
+            <a href="/about">
                 <label>A propos</label>
             </a>
         </div>

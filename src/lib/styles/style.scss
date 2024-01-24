@@ -8,6 +8,7 @@
     background: linear-gradient(180deg, rgba(66,113,203,1) 0%, rgba(144,157,225,1) 22%, rgba(240,218,231,1) 62%, rgba(252,250,236,1) 100%);
     position: relative;
     z-index: 1;
+    max-height: 100vh;
     .title{
         position: absolute;
         top: 80px;
