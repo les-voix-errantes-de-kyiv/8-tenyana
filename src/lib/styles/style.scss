@@ -1,6 +1,8 @@
+@import 'colors.scss';
+
 .background{
-    background: rgb(66,113,203);
-    background: linear-gradient(180deg, rgba(66,113,203,1) 0%, rgba(144,157,225,1) 22%, rgba(240,218,231,1) 62%, rgba(252,250,236,1) 100%);
+    background: $color-blue;
+    background: linear-gradient(180deg, $color-blue 0%, $color-lightblue 22%, $color-pink 62%, $color-offwhite 100%);
     
     .buttons {
         position: relative;

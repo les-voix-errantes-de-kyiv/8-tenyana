@@ -17,10 +17,10 @@
     import '$lib/styles/style.scss';
     // import {currentSceneIndexStore, scenesContentStore} from "$lib/stores";
     import Card from "$lib/components/Card.svelte";
+    import PrimaryButton from "$lib/components/PrimaryButton.svelte";
 
     let canvas;
     let isHomePage = true;
-
 
     function startExperience(){
         isHomePage = false
@@ -44,7 +44,8 @@
     <Title isHomePage={isHomePage}/>
     <canvas id="three" bind:this={canvas}></canvas>
     {#if isHomePage}
-        <button on:click={() => startExperience()}>Démarer l'expérience</button>
+        <button on:click={() => startExperience()}>Démarrer l'expérience</button>
+        <PrimaryButton title="Débuter l'histoire" on:click={() => startExperience()} />
     {:else }
         <Card />
     {/if}
