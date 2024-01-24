@@ -17,6 +17,10 @@ export const islandAndSceneGroupStore = writable(new Group());
 export const planeMeshStore = writable(new Mesh());
 export const islandMeshStore = writable(new Mesh());
 export const sceneMeshStore = writable(new Mesh());
+export const plateformeMeshStore1 = writable(new Mesh());
+export const plateformeMeshStore2 = writable(new Mesh());
+export const plateformeMeshStore3 = writable(new Mesh());
+export const plateformeMeshStore4 = writable(new Mesh());
 export const scenesContentStore = readable<{ title: string; subTitle: string }[]>([
 	{ title: 'Ukraine', subTitle: 'Le calme avant...' },
 	{ title: 'scene 2', subTitle: 'Le calme avant...' },

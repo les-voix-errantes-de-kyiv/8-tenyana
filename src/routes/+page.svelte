@@ -6,6 +6,10 @@
         placeIslandModel,
         placePlaneModel,
         placeSceneModel,
+        placePlateformeModel1,
+        placePlateformeModel2,
+        placePlateformeModel3,
+        placePlateformeModel4,
         zoomCamera
     } from "$lib/functions";
     import {onMount} from "svelte";
@@ -29,11 +33,23 @@
         loadModel('/assets/Avion.glb').then((model: GLTF) => {
             placePlaneModel(model)
         })
-        loadModel('/assets/Island.glb').then((island: GLTF) => {
+        loadModel('/assets/IslandV2.glb').then((island: GLTF) => {
             placeIslandModel(island)
         })
         loadModel('/assets/scene.glb').then((scene: GLTF) => {
             placeSceneModel(scene)
+        })
+        loadModel('/assets/Plateforme_1.glb').then((plateforme: GLTF) => {
+            placePlateformeModel1(plateforme)
+        })
+        loadModel('/assets/Plateforme_2.glb').then((plateforme: GLTF) => {
+            placePlateformeModel2(plateforme)
+        })
+        loadModel('/assets/Plateforme_3.glb').then((plateforme: GLTF) => {
+            placePlateformeModel3(plateforme)
+        })
+        loadModel('/assets/Plateforme_4.glb').then((plateforme: GLTF) => {
+            placePlateformeModel4(plateforme)
         })
     })
 </script>

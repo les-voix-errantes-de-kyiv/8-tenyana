@@ -9,15 +9,24 @@ import {
 	sceneMeshStore,
 	islandAndSceneGroupStore,
 	scenesContentStore,
-	currentSceneIndexStore
+	currentSceneIndexStore,
+	plateformeMeshStore1,
+	plateformeMeshStore2,
+	plateformeMeshStore3,
+	plateformeMeshStore4
 } from '$lib/stores';
 import { get } from 'svelte/store';
 import type { GLTF } from 'three/examples/jsm/loaders/GLTFLoader.js';
+import gsap from 'gsap';
 
 const scene = get(sceneStore);
 const camera = get(cameraStore);
 const ambientLight = get(ambientLightStore);
 const islandMesh = get(islandMeshStore);
+const plateformeMesh1 = get(plateformeMeshStore1);
+const plateformeMesh2 = get(plateformeMeshStore2);
+const plateformeMesh3 = get(plateformeMeshStore3);
+const plateformeMesh4 = get(plateformeMeshStore4);
 const sceneMesh = get(sceneMeshStore);
 const islandAndSceneGroup = get(islandAndSceneGroupStore);
 const sceneContent = get(scenesContentStore);
@@ -60,6 +69,26 @@ export function placeSceneModel(model: GLTF) {
 	sceneMesh.add(meshModel);
 }
 
+export function placePlateformeModel1(model: GLTF) {
+	const meshModel = model.scene.children[0];
+	plateformeMesh1.add(meshModel);
+}
+
+export function placePlateformeModel2(model: GLTF) {
+	const meshModel = model.scene.children[0];
+	plateformeMesh2.add(meshModel);
+}
+
+export function placePlateformeModel3(model: GLTF) {
+	const meshModel = model.scene.children[0];
+	plateformeMesh3.add(meshModel);
+}
+
+export function placePlateformeModel4(model: GLTF) {
+	const meshModel = model.scene.children[0];
+	plateformeMesh4.add(meshModel);
+}
+
 export function loadModel(url: string) {
 	const gltfLoader = get(gltfLoaderStore);
 	return gltfLoader.loadAsync(url);
@@ -72,16 +101,17 @@ export function makeGroup() {
 }
 
 export function rotateScene() {
-	islandAndSceneGroup.rotation.y = Math.PI * 0.25 + islandAndSceneGroup.rotation.y;
-	zoomCamera();
-	onPressRight();
-	camera.lookAt(islandMesh.position);
+    gsap.to(islandAndSceneGroup.rotation, { y: Math.PI * 0.5 + islandAndSceneGroup.rotation.y, duration: 1, ease: 'power2.inOut' });
+    zoomCamera();
+    onPressRight();
+    camera.lookAt(islandMesh.position);
 }
+
 export function unRotateScene() {
-	islandAndSceneGroup.rotation.y = Math.PI * -0.25 + islandAndSceneGroup.rotation.y;
-	zoomCamera();
-	camera.lookAt(islandMesh.position);
-	onPressLeft();
+    gsap.to(islandAndSceneGroup.rotation, { y: Math.PI * -0.5 + islandAndSceneGroup.rotation.y, duration: 1, ease: 'power2.inOut' });
+    zoomCamera();
+    camera.lookAt(islandMesh.position);
+    onPressLeft();
 }
 
 function onPressRight() {
