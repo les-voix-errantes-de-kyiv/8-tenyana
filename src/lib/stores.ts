@@ -1,4 +1,4 @@
-import { Scene, PerspectiveCamera, Mesh, AmbientLight, Group } from 'three';
+import { Scene, PerspectiveCamera, Mesh, AmbientLight, Group, SpotLight } from 'three';
 import { readable, writable } from 'svelte/store';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 
@@ -20,6 +20,7 @@ export const cameraStore = writable(
 );
 export const currentSceneIndexStore = writable(0);
 export const ambientLightStore = writable(new AmbientLight(0xffffff));
+export const spotLightStore = writable(new SpotLight());
 export const gltfLoaderStore = writable(new GLTFLoader());
 export const islandAndSceneGroupStore = writable(new Group());
 export const planeMeshStore = writable(new Mesh());
