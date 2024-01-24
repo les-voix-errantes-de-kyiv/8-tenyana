@@ -1,6 +1,10 @@
 @import '../colors.scss';
 
 .primary-button {
+    position: absolute;
+    bottom: 80px;
+    left: 50%;
+    transform: translate(-50%);
     padding: 9px 24px;
     color: $color-blue;
     background: $color-white;
@@ -9,4 +13,5 @@
     box-shadow: 2px 3px 0px 0px rgba(56, 83, 136, 0.25);
     font-weight: 600;
     cursor: pointer;
+    white-space: nowrap;
 }

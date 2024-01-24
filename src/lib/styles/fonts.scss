@@ -28,13 +28,26 @@
     font-weight: 600;
     font-style: normal;
   }
+
+  // ------------- * Secondary Font library * -------------
+
+  @font-face {
+    font-family: "Inria-Regular";
+    src: url('fonts/inria-font-family/Inria-Regular.ttf') format('truetype');
+    font-display: swap;
+    font-weight: 400;
+    font-style: normal;
+  }
   
   // ------------- * Main Font library * -------------
   
   $font-main-Regular  : "LexendDeca-Regular";
   $font-main-Medium   : "LexendDeca-Medium";
   $font-main-SemiBold   : "LexendDeca-SemiBold";
-  $font-main-Bold   : "LexendDeca-Bold";
+
+  // ------------- * Main Font library * -------------
+
+  $font-secondary-Regular  : "Inria-Regular";
 
   /**
  * --------------------------------------------------------------------------------------------------------------
@@ -263,7 +276,12 @@ $min-desktop-no-burger: 1361px;
   
   // -------------- * Primary Font Families * --------------
   
-  h1{
+  h1 {
+    font-family: $font-main-SemiBold;
+    font-weight: 600;
+  }
+
+  label {
     font-family: $font-main-Medium;
     font-weight: 500;
   }
@@ -278,7 +296,6 @@ $min-desktop-no-burger: 1361px;
   
   h1 {
     font-size: pixelsCalc(60);
-    line-height: pixelsCalc(65);
     @include end-tablet {
       font-size: pixelsCalc(32);
     }
@@ -286,7 +303,6 @@ $min-desktop-no-burger: 1361px;
 
   h2 {
     font-size: pixelsCalc(35);
-    line-height: pixelsCalc(40);
     @include end-tablet {
       font-size: pixelsCalc(20);
     }
@@ -294,7 +310,6 @@ $min-desktop-no-burger: 1361px;
 
   p {
     font-size: pixelsCalc(16);
-    line-height: pixelsCalc(21);
     @include end-tablet {
       font-size: pixelsCalc(16);
     }
@@ -302,16 +317,21 @@ $min-desktop-no-burger: 1361px;
 
   a {
     font-size: pixelsCalc(18);
-    line-height: pixelsCalc(23);
     @include end-tablet {
       font-size: pixelsCalc(16);
       line-height: pixelsCalc(26);
     }
   }
 
+  label {
+    font-size: pixelsCalc(18);
+    @include end-tablet {
+      font-size: pixelsCalc(12);
+    }
+  }
+
   button {
     font-size: pixelsCalc(18);
-    line-height: pixelsCalc(23);
     @include end-tablet {
       font-size: pixelsCalc(16);
       line-height: pixelsCalc(18);
