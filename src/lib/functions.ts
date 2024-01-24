@@ -64,11 +64,6 @@ export function placeIslandModel(model: GLTF) {
 	islandMesh.add(meshModel);
 }
 
-export function placeSceneModel(model: GLTF) {
-	const meshModel = model.scene.children[0];
-	sceneMesh.add(meshModel);
-}
-
 export function placePlateformeModel1(model: GLTF) {
 	const meshModel = model.scene.children[0];
 	plateformeMesh1.add(meshModel);
@@ -96,22 +91,33 @@ export function loadModel(url: string) {
 
 export function makeGroup() {
 	islandAndSceneGroup.add(islandMesh);
-	islandAndSceneGroup.add(sceneMesh);
+	islandAndSceneGroup.add(plateformeMesh1);
+	islandAndSceneGroup.add(plateformeMesh2);
+	islandAndSceneGroup.add(plateformeMesh3);
+	islandAndSceneGroup.add(plateformeMesh4);
 	scene.add(islandAndSceneGroup);
 }
 
 export function rotateScene() {
-    gsap.to(islandAndSceneGroup.rotation, { y: Math.PI * 0.5 + islandAndSceneGroup.rotation.y, duration: 1, ease: 'power2.inOut' });
-    zoomCamera();
-    onPressRight();
-    camera.lookAt(islandMesh.position);
+	gsap.to(islandAndSceneGroup.rotation, {
+		y: Math.PI * 0.5 + islandAndSceneGroup.rotation.y,
+		duration: 1,
+		ease: 'power2.inOut'
+	});
+	zoomCamera();
+	onPressRight();
+	camera.lookAt(islandMesh.position);
 }
 
 export function unRotateScene() {
-    gsap.to(islandAndSceneGroup.rotation, { y: Math.PI * -0.5 + islandAndSceneGroup.rotation.y, duration: 1, ease: 'power2.inOut' });
-    zoomCamera();
-    camera.lookAt(islandMesh.position);
-    onPressLeft();
+	gsap.to(islandAndSceneGroup.rotation, {
+		y: Math.PI * -0.5 + islandAndSceneGroup.rotation.y,
+		duration: 1,
+		ease: 'power2.inOut'
+	});
+	zoomCamera();
+	camera.lookAt(islandMesh.position);
+	onPressLeft();
 }
 
 function onPressRight() {
