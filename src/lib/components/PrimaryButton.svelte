@@ -4,4 +4,4 @@
     export let onClick = () => {};
 </script>
 
-<button class="primary-button uppercase" on:click={onClick}>{title}</button>
+<button class="primary-button uppercase" on:click={() => onClick()}>{title}</button>

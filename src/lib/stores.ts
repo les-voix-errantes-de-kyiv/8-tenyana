@@ -2,6 +2,13 @@ import { Scene, PerspectiveCamera, Mesh, AmbientLight, Group } from 'three';
 import { readable, writable } from 'svelte/store';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 
+type ScencesContent = {
+	title: string;
+	subTitle: string;
+	content: string;
+	image: string;
+};
+
 export const sceneStore = writable(new Scene());
 export const cameraStore = writable(
 	new PerspectiveCamera(
@@ -11,15 +18,14 @@ export const cameraStore = writable(
 		1000
 	)
 );
+export const currentSceneIndexStore = writable(0);
 export const ambientLightStore = writable(new AmbientLight(0xffffff));
 export const gltfLoaderStore = writable(new GLTFLoader());
 export const islandAndSceneGroupStore = writable(new Group());
 export const planeMeshStore = writable(new Mesh());
 export const islandMeshStore = writable(new Mesh());
 export const sceneMeshStore = writable(new Mesh());
-export const scenesContentStore = readable<
-	{ title: string; subTitle: string; content: string; image: string }[]
->([
+export const scenesContentStore = readable<ScencesContent[]>([
 	{
 		title: 'Ukraine - 1',
 		subTitle: 'Avant la guerre',
@@ -61,7 +67,6 @@ export const scenesContentStore = readable<
 		image: '/assets/france.png'
 	}
 ]);
-export const currentSceneIndexStore = writable(0);
 export const plateformeMeshStore1 = writable(new Mesh());
 export const plateformeMeshStore2 = writable(new Mesh());
 export const plateformeMeshStore3 = writable(new Mesh());

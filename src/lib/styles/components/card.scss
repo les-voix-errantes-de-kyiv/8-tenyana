@@ -1,11 +1,17 @@
 @import '../colors';
 
+.backgroundRotateExpand{
+  transform: rotate(-4deg) translate(-20px, 20px) ;
+}
+.backgroundRotateNotExpand{
+  transform: rotate(-4deg) translate(-20px, 20px) ;
+}
+
 .backgroundRotate{
-  transform: rotate(-4deg) translate(- 20px, 30px);
   background-color: $color-beige;
   padding: 2rem;
   box-shadow: 5px 5px $color-brown;
-  height: 125px;
+  height: 30%;
   position: relative;
   z-index: 1;
   .component{
@@ -18,10 +24,14 @@
       color: $color-blue;
       text-transform: uppercase;
     }
+    .content{
+      overflow: scroll;
+    }
     .titleContainer{
       width: 70%;
       .titleCard{
         margin-bottom: 0.5rem;
+        font-size: 20px;
       }
     }
     .buttonContainer{
@@ -30,21 +40,23 @@
       align-items: end;
       .subTitle{
         text-decoration: underline;
-        padding-top: 2rem;
         text-underline-offset: 8px;
+        margin-top: 2rem;
+        font-size: 16px;
       }
       .buttons {
         display: flex;
         justify-content: space-between;
         gap: 10px;
-        transform: translate(0, 8px);
+        transform: translate(20px, 8px);
       }
     }
   }
   .image{
     position: absolute;
-    top: 0;
-    right: 0;
+    top: 10px;
+    right: 10px;
+    width: 50px;
   }
 }
 .backgroundBehind{
@@ -52,7 +64,7 @@
   background-color: $color-beige;
   padding: 2rem;
   box-shadow: 5px 5px $color-brown;
-  height: 100px;
+  height: 30%;
   position: absolute;
   right: -20px;
   top: 0;

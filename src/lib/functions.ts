@@ -100,7 +100,7 @@ export function makeGroup() {
 
 export function rotateScene() {
 	gsap.to(islandAndSceneGroup.rotation, {
-		y: Math.PI * 0.5 + islandAndSceneGroup.rotation.y,
+		y: Math.PI * -0.5 + islandAndSceneGroup.rotation.y,
 		duration: 1,
 		ease: 'power2.inOut'
 	});
@@ -111,7 +111,7 @@ export function rotateScene() {
 
 export function unRotateScene() {
 	gsap.to(islandAndSceneGroup.rotation, {
-		y: Math.PI * -0.5 + islandAndSceneGroup.rotation.y,
+		y: Math.PI * 0.5 + islandAndSceneGroup.rotation.y,
 		duration: 1,
 		ease: 'power2.inOut'
 	});
