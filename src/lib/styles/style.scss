@@ -3,4 +3,24 @@
 .background{
     background: rgb(66,113,203);
     background: linear-gradient(180deg, rgba(66,113,203,1) 0%, rgba(144,157,225,1) 22%, rgba(240,218,231,1) 62%, rgba(252,250,236,1) 100%);
+    position: relative;
+    z-index: 1;
+    .title{
+        position: absolute;
+        top: 20px;
+    }
+    .primaryButton{
+        position: absolute;
+        bottom: 20px;
+    }
+    .card{
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        overflow: hidden;
+    }
 }
+
+
+

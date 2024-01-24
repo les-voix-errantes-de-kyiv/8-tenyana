@@ -1,0 +1,10 @@
+@import '../colors';
+
+.button{
+  width: 3rem;
+  height: 3rem;
+  background-color: $color-blue;
+  border-radius: 100%;
+  border: none;
+  box-shadow: 3px 3px $color-grey ;
+}

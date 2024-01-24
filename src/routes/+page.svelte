@@ -50,11 +50,17 @@
     })
 </script>
 <div class="background">
-    <Title isHomePage={isHomePage}/>
+    <div class="title">
+        <Title isHomePage={isHomePage}/>
+    </div>
     <canvas id="three" bind:this={canvas}></canvas>
     {#if isHomePage}
-        <PrimaryButton title="Débuter l'histoire" onClick={() => startExperience()} />
+        <div class="primaryButton">
+            <PrimaryButton title="Débuter l'histoire" onClick={() => startExperience()} />
+        </div>
     {:else }
-        <Card />
+        <div class="card">
+            <Card />
+        </div>
     {/if}
 </div>

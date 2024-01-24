@@ -12,6 +12,8 @@ $color-black     : #000000;
 $color-lightblue : #909DE1;
 $color-blue : #4472CB;
 $color-grey: #D9D9D9;
+$color-beige: #FFFBEC;
+$color-brown: rgba(211, 132, 82, 0.25);
 
 $color-primary : $color-black;
 $color-text    : $color-black;
@@ -32,17 +34,17 @@ $color-text    : $color-black;
 ) {
 
   // -------------- * Color classes * --------------
-  .color-#{$color-name} {
+  .color-#{""+$color-name} {
     color: $color-value !important;
   }
 
   // -------------- * Background classes * --------------
-  .bkg-#{$color-name} {
+  .bkg-#{""+$color-name} {
     background-color: $color-value !important;
   }
 
   // -------------- * SVG classes * --------------
-  .fill-#{$color-name} {
+  .fill-#{""+$color-name} {
     > svg * { fill: $color-value !important; }
   }
 }
