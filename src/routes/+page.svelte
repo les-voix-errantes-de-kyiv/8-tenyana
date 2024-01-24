@@ -41,8 +41,7 @@
     <Title isHomePage={isHomePage}/>
     <canvas id="three" bind:this={canvas}></canvas>
     {#if isHomePage}
-        <button on:click={() => startExperience()}>Démarrer l'expérience</button>
-        <PrimaryButton title="Débuter l'histoire" on:click={() => startExperience()} />
+        <PrimaryButton title="Débuter l'histoire" onClick={() => startExperience()} />
     {:else }
         <Card />
     {/if}
