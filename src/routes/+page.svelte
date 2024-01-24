@@ -58,6 +58,15 @@
         <div class="primaryButton">
             <PrimaryButton title="Débuter l'histoire" onClick={() => startExperience()} />
         </div>
+        <div class="homepageLinks uppercase">
+            <a href="/">
+                <label>Soutenir</label>
+            </a>
+            <label>-</label>
+            <a href="/">
+                <label>A propos</label>
+            </a>
+        </div>
     {:else }
         <div class="card">
             <Card />
