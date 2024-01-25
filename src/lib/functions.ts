@@ -17,6 +17,7 @@ import {
 import { get } from 'svelte/store';
 import type { GLTF } from 'three/examples/jsm/loaders/GLTFLoader.js';
 import gsap from 'gsap';
+import * as THREE from 'three'
 
 const scene = get(sceneStore);
 const camera = get(cameraStore);
@@ -113,6 +114,38 @@ export function unRotateScene() {
 	onPressLeft();
 }
 
+export function particles () {
+	const particlesGeometry = new THREE.BufferGeometry();
+	const count = 1500;
+	const minDistance = 20;
+
+	const positions = new Float32Array(count * 3);
+
+	for (let i = 0; i < count * 3; i += 3) {
+		let x, y, z;
+		
+		do {
+			x = (Math.random() - 0.5) * 50;
+			y = (Math.random() - 0.5) * 50;
+			z = (Math.random() - 0.5) * 50;
+		} while (Math.sqrt(x*x + y*y + z*z) < minDistance);
+		
+		positions[i] = x;
+		positions[i + 1] = y;
+		positions[i + 2] = z;
+	}
+
+	particlesGeometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+
+	const particlesMaterial = new THREE.PointsMaterial({
+		size: 0.1,
+		sizeAttenuation: true
+	});
+
+	const particles = new THREE.Points(particlesGeometry, particlesMaterial);
+	scene.add(particles);
+}
+
 function onPressRight() {
 	const currentSceneIndex = get(currentSceneIndexStore);
 
@@ -131,3 +164,4 @@ function onPressLeft() {
 	}
 	currentSceneIndexStore.update((index) => index - 1);
 }
+

@@ -9,6 +9,9 @@
     position: relative;
     z-index: 1;
     min-height: 100vh;
+    .header {
+        
+    }
     .title{
         position: absolute;
         top: 80px;
@@ -20,6 +23,7 @@
             font-family: $font-secondary-Regular;
         }
         h1 {
+            margin-top: -8px;
             letter-spacing: 2.56px;
         }
         p {

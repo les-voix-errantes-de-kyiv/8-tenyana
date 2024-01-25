@@ -12,6 +12,7 @@
     <div class="backgroundBehind"></div>
 {:else}
     <div class={`${style} backgroundRotate aboutBackground`}>
+        
         <div class="component aboutComponent">
             <div class="swiper-elements">
                 <swiper-button-prev></swiper-button-prev>
@@ -26,7 +27,7 @@
                     <div class="containerText">
                         <div class="website">
                             <img src="/assets/website.svg" alt="">
-                            <p>https://www.helloasso.com/associations/la-maison-ukrainienne</p>
+                            <a href="https://www.helloasso.com/associations/la-maison-ukrainienne" target="_blank">https://www.helloasso.com/associations/la-maison-ukrainienne</a>
                         </div>
                         <div class="adress">
                             <img src="/assets/adress.svg" alt="">
@@ -36,82 +37,10 @@
                             <img src="/assets/email.svg" alt="">
                             <p>contact@lamaisonukrainienne.org</p>
                         </div>
-                        <div class="phone">
-                            <img src="/assets/phone.svg" alt="">
-                            <p>0606060606</p>
-                        </div>
-                        <p>La Maison Ukrainienne est une association à Bordeaux qui soutient l'intégration des femmes ukrainiennes en offrant des programmes linguistiques et culturels. </p>
-                    </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="containerTitle">
-                        <h3 class="titleAbout uppercase">La maison ukrainienne</h3>
-                    </div>
-                    <div class="containerText">
-                        <div class="website">
-                            <img src="/assets/website.svg" alt="">
-                            <p>https://www.helloasso.com/associations/la-maison-ukrainienne</p>
-                        </div>
-                        <div class="adress">
-                            <img src="/assets/adress.svg" alt="">
-                            <p>55 Av. du Maréchal de Lattre de Tassigny, 33700 Mérignac</p>
-                        </div>
-                        <div class="email">
-                            <img src="/assets/email.svg" alt="">
-                            <p>contact@lamaisonukrainienne.org</p>
-                        </div>
-                        <div class="phone">
-                            <img src="/assets/phone.svg" alt="">
-                            <p>0606060606</p>
-                        </div>
-                        <p>La Maison Ukrainienne est une association à Bordeaux qui soutient l'intégration des femmes ukrainiennes en offrant des programmes linguistiques et culturels. </p>
-                    </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="containerTitle">
-                        <h3 class="titleAbout uppercase">La maison ukrainienne</h3>
-                    </div>
-                    <div class="containerText">
-                        <div class="website">
-                            <img src="/assets/website.svg" alt="">
-                            <p>https://www.helloasso.com/associations/la-maison-ukrainienne</p>
-                        </div>
-                        <div class="adress">
-                            <img src="/assets/adress.svg" alt="">
-                            <p>55 Av. du Maréchal de Lattre de Tassigny, 33700 Mérignac</p>
-                        </div>
-                        <div class="email">
-                            <img src="/assets/email.svg" alt="">
-                            <p>contact@lamaisonukrainienne.org</p>
-                        </div>
-                        <div class="phone">
-                            <img src="/assets/phone.svg" alt="">
-                            <p>0606060606</p>
-                        </div>
-                        <p>La Maison Ukrainienne est une association à Bordeaux qui soutient l'intégration des femmes ukrainiennes en offrant des programmes linguistiques et culturels. </p>
-                    </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="containerTitle">
-                        <h3 class="titleAbout uppercase">La maison ukrainienne</h3>
-                    </div>
-                    <div class="containerText">
-                        <div class="website">
-                            <img src="/assets/website.svg" alt="">
-                            <p>https://www.helloasso.com/associations/la-maison-ukrainienne</p>
-                        </div>
-                        <div class="adress">
-                            <img src="/assets/adress.svg" alt="">
-                            <p>55 Av. du Maréchal de Lattre de Tassigny, 33700 Mérignac</p>
-                        </div>
-                        <div class="email">
-                            <img src="/assets/email.svg" alt="">
-                            <p>contact@lamaisonukrainienne.org</p>
-                        </div>
-                        <div class="phone">
-                            <img src="/assets/phone.svg" alt="">
-                            <p>0606060606</p>
-                        </div>
+                        <!-- <div class="phone"> -->
+                            <!-- <img src="/assets/phone.svg" alt=""> -->
+                            <!-- <p>0606060606</p> -->
+                        <!-- </div> -->
                         <p>La Maison Ukrainienne est une association à Bordeaux qui soutient l'intégration des femmes ukrainiennes en offrant des programmes linguistiques et culturels. </p>
                     </div>
                 </div>

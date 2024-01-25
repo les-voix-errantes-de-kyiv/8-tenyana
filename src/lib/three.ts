@@ -1,7 +1,7 @@
 import { WebGLRenderer } from 'three';
 import { sceneStore, cameraStore } from '$lib/stores';
 import { get } from 'svelte/store';
-import { initObjectScene, makeGroup, resize } from '$lib/functions';
+import { initObjectScene, makeGroup, particles, resize } from '$lib/functions';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 import { addDebug } from '$lib/guiDebug';
 // import { addDebug } from '$lib/guiDebug';
@@ -28,6 +28,7 @@ export const createScene = (el: HTMLCanvasElement) => {
 	initObjectScene();
 	makeGroup();
 	addDebug();
+	particles();
 };
 
 window.addEventListener('resize', () => resize(renderer));

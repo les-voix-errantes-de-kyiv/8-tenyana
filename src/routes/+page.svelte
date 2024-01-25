@@ -20,6 +20,7 @@
     import {faChevronLeft, faChevronRight} from "@fortawesome/free-solid-svg-icons";
     import Pagination from "$lib/components/Pagination.svelte";
     import ArrowButton from "$lib/components/ArrowButton.svelte";
+    import Header from "$lib/components/Header.svelte";
     import {get} from "svelte/store";
     import {currentSceneIndexStore, scenesContentStore} from "$lib/stores";
 
@@ -73,6 +74,9 @@
     })
 </script>
 <div class="background">
+    <div class="header">
+        <Header isHomePage={isHomePage}/>
+    </div>
     <div class="title">
         <Title isHomePage={isHomePage}/>
     </div>
