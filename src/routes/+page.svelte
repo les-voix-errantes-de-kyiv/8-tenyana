@@ -6,7 +6,6 @@
         zoomCamera
     } from "$lib/functions";
     import {onMount} from "svelte";
-    import type {GLTF} from "three/examples/jsm/loaders/GLTFLoader.js";
     import '$lib/styles/colors.scss';
     import '$lib/styles/fonts.scss';
     import '$lib/styles/style.scss';
@@ -50,27 +49,30 @@
         loadModel()
         createScene(canvas)
     })
+    $: console.log(isHomePage)
 </script>
 <div class="background">
-    <div class="header">
-        <Header isHomePage={isHomePage}/>
-    </div>
+<!--    <div class="header">-->
+<!--        <Header isHomePage={isHomePage}/>-->
+<!--    </div>-->
     <div class="title">
         <Title isHomePage={isHomePage}/>
     </div>
     <canvas id="three" bind:this={canvas}></canvas>
     {#if isHomePage}
-        <div class="primaryButton">
-            <PrimaryButton title="Débuter l'histoire" onClick={() => startExperience()} />
-        </div>
-        <div class="homepageLinks uppercase">
-            <a href="/">
-                <label>Soutenir</label>
-            </a>
-            <label>-</label>
-            <a href="/about">
-                <label>A propos</label>
-            </a>
+        <div class="absolute">
+            <div class="primaryButton">
+                <PrimaryButton title="Débuter l'histoire" onClick={() => startExperience()} />
+            </div>
+            <div class="homepageLinks uppercase">
+                <a href="/helps">
+                    <label>Soutenir</label>
+                </a>
+                <label>-</label>
+                <a href="/about">
+                    <label>A propos</label>
+                </a>
+            </div>
         </div>
     {:else }
         <div class="card">
