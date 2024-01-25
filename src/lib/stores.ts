@@ -23,9 +23,7 @@ export const ambientLightStore = writable(new AmbientLight(0xffffff));
 export const spotLightStore = writable(new SpotLight());
 export const gltfLoaderStore = writable(new GLTFLoader());
 export const islandAndSceneGroupStore = writable(new Group());
-export const planeMeshStore = writable(new Mesh());
 export const islandMeshStore = writable(new Mesh());
-export const sceneMeshStore = writable(new Mesh());
 export const scenesContentStore = readable<ScencesContent[]>([
 	{
 		title: 'Ukraine - 1',

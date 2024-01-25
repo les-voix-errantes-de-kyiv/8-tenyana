@@ -4,7 +4,6 @@ import {
 	cameraStore,
 	ambientLightStore,
 	gltfLoaderStore,
-	planeMeshStore,
 	islandMeshStore,
 	islandAndSceneGroupStore,
 	scenesContentStore,
@@ -51,13 +50,6 @@ export function initObjectScene() {
 	scene.add(ambientLight);
 	scene.add(spotLight);
 	initCameraScene();
-}
-
-export function placePlaneModel(model: GLTF) {
-	const meshModel = model.scene.children[0];
-	const planeMesh = get(planeMeshStore);
-	planeMesh.add(meshModel);
-	scene.add(planeMesh);
 }
 
 export function placeIslandModel(model: GLTF) {
