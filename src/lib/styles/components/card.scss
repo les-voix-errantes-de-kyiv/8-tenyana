@@ -1,31 +1,45 @@
 @import '../colors';
 
 .backgroundRotateExpand{
-  transform: rotate(-4deg) translate(-20px, 20px) ;
+  transform: rotate(0deg) ;
+  max-height: 30rem;
 }
 .backgroundRotateNotExpand{
   transform: rotate(-4deg) translate(-20px, 20px) ;
+  max-height: 10rem;
+}
+
+.componentNotExpand{
+  transform: rotate(4deg);
+}
+.componentExpand{
+  transform: rotate(0deg);
 }
 
 .backgroundRotate{
   background-color: $color-beige;
-  padding: 1.5rem;
+  padding: 2rem;
   box-shadow: 5px 5px $color-brown;
-  height: 30%;
   position: relative;
   z-index: 1;
+  height: 100%;
+  overflow: scroll;
+  .closeButton{
+    padding-bottom: 1rem;
+  }
   .component{
     display: flex;
     justify-content: space-between;
     flex-direction: column;
-    transform: rotate(4deg);
     padding-bottom: 2rem;
     .text{
       color: $color-blue;
       text-transform: uppercase;
     }
     .content{
-      overflow: scroll;
+      color: $color-blue;
+      padding-top: 1rem;
+      padding-bottom: 1rem;
     }
     .titleContainer{
       width: 70%;
@@ -34,21 +48,26 @@
         font-size: 20px;
       }
     }
+    .buttonContainerCenter{
+      justify-content: center;
+    }
+    .buttonContainerSpaceBetween{
+      justify-content: space-between;
+    }
     .buttonContainer{
       display: flex;
-      justify-content: space-between;
       align-items: end;
       .subTitle{
         text-decoration: underline;
         text-underline-offset: 8px;
         margin-top: 2rem;
         font-size: 16px;
+        transform: translate(0, -6px);
       }
       .buttons {
         display: flex;
         justify-content: space-between;
         gap: 10px;
-        transform: translate(20px, 8px);
       }
     }
   }
@@ -59,6 +78,9 @@
     width: 50px;
   }
 }
+
+
+
 .aboutBackground {
   .aboutComponent {
     padding-bottom: 0;
@@ -99,7 +121,7 @@
   background-color: $color-beige;
   padding: 2rem;
   box-shadow: 5px 5px $color-brown;
-  height: 30%;
+  height: 100%;
   position: absolute;
   right: -20px;
   top: 0;
