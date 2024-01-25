@@ -1,82 +1,45 @@
 <script lang="ts">
-    import Card from "$lib/components/Card.svelte";
     import '$lib/styles/colors.scss';
     import '$lib/styles/fonts.scss';
-    import '$lib/styles/style.scss';
-    import {get} from "svelte/store";
-    import {aboutContentStore} from "$lib/stores";
-    import {Fa} from "svelte-fa";
-    import {faChevronLeft, faChevronRight, faEnvelope, faGlobe, faLocationDot, faPhone} from "@fortawesome/free-solid-svg-icons";
-    import ArrowButton from "$lib/components/ArrowButton.svelte";
-    import Pagination from "$lib/components/Pagination.svelte";
-
-    let currentIndex = 0;
-
-    const aboutContents = get(aboutContentStore)
-
-    $: content = aboutContents[currentIndex]
+    import '$lib/styles/aboutPage.scss'
+    import {onMount} from "svelte";
+    import {createAboutScene} from "$lib/three";
+    import { loadModel} from "$lib/functions";
 
 
-    function onPressLeft(){
-        if(currentIndex === 0){
-            currentIndex = aboutContents.length - 1
-            return
-        }
-        currentIndex = currentIndex - 1
-    }
+    let canvas: HTMLCanvasElement;
 
-    function onPressRight(){
-        if(currentIndex === aboutContents.length - 1){
-            currentIndex = 0
-            return
-        }
-        currentIndex = currentIndex + 1
-    }
+    onMount(() => {
+        createAboutScene(canvas);
+        loadModel()
+    })
 
 </script>
-<div class="background about">
+<div class="container">
     <div class="title">
         <!-- <Title isHomePage={false}/> -->
     </div>
     <div class="text">
-        <h2 class="uppercase">apporter son soutien</h2>
-        <p>Si vous le souhaitez, vous pouvez apporter votre soutien aux femmes ukrainiennes, et pour cela il vous suffit de devenir bénévole ou d’effectuer des dons. Contribuer à aider ces femmes, souvent invisibles aux yeux de la société, c'est participer activement à une société plus inclusive. Ci-dessous, vous trouverez une liste d'associations à Bordeaux qui s'investissent dans l'intégration des femmes ukrainiennes en France.</p>
-        <h2 class="uppercase">Associations</h2>
-    </div>
-    <div class="card">
-        <Card isHomePage={false}>
-            <div class="component aboutComponent">
-                <div class="titleContainer">
-                    <ArrowButton icon={faChevronLeft} primaryColor="#FFFFFF" scale={1.5} onClick={() => onPressLeft()}/>
-                    <h3 >{content.name}</h3>
-                    <ArrowButton icon={faChevronRight} primaryColor="#FFFFFF" scale={1.5} onClick={() => onPressRight()}/>
-                </div>
-                <div class="pagination">
-                    <Pagination currentIndex={currentIndex} array={aboutContents} />
-                </div>
-                <div class="contentContainer">
-                    <div class="contentWithIcon">
-                        <img src="/assets/website.svg" alt="icon internet"/>
-                        <p>{content.link}</p>
-                    </div>
-                    <div class="contentWithIcon">
-                        <img src="/assets/adress.svg" alt="icon adresse"/>
-                        <p>{content.address}</p>
-                    </div>
-                    {#if content.mail}
-                        <div class="contentWithIcon">
-                            <img src="/assets/email.svg" alt="icon email"/>
-                            <p>{content.mail}</p>
-                        </div>
-                    {/if}
-                    {#if content.phone}
-                        <div class="contentWithIcon">
-                            <img src="/assets/phone.svg" alt="icon téléphone"/>
-                            <p>{content.phone}</p>
-                        </div>
-                    {/if}
-                </div>
+        <h2 class="uppercase">À propos</h2>
+        <p>D’après la véritable histoire de Tetyana, une femme forte et indépendante, qui a subi un parcours migratoire déchirant, quittant son mari et sa mère, pour assurer un futur plus stable à son fils.</p>
+        <p>En créant cette expérience immersive, nous espérons attirer l'attention et le soutien de ceux qui pourraient aider la cause des femmes ukrainiennes, que ce soit par l’intermédiaire d’institutions, d’associations ou de bénévoles.</p>
+        <p>Si vous souhaitez contacter Tetyana : LinkedIn : <a class="link" href="https://www.linkedin.com/in/tetyana-gerasymchuk-08b8b913a/">Tetyana Gerasymchuk</a> </p>
+        <div class="text-center">
+            <p>Un projet étudiant réalisé par :</p>
+            <div class="uppercase">
+                <p>Auréliane Dor</p>
+                <p>Maxime Lust le giga BG</p>
+                <p>Leïly coquard misono la DA en or</p>
+                <p>jason nago le 3D artiste fou</p>
+                <p>safiya seddiki la grosse nulloss</p>
             </div>
-        </Card>
+        </div>
+        <div class="logo">
+            <img src="/assets/mmi.svg" alt="Logo mmi"/>
+            <img src="/assets/maisonUkr.svg" alt="Logo Maison urkrainienne" />
+        </div>
+    </div>
+    <div class="canvas">
+        <canvas id="three" bind:this={canvas}></canvas>
     </div>
 </div>

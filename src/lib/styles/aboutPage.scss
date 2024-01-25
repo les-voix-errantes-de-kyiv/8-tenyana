@@ -1,0 +1,34 @@
+@import 'colors';
+
+.container{
+  background: rgb(66,113,203);
+  background: linear-gradient(180deg, $color-blue 0%, $color-lightblue 22%, $color-pink 62%, $color-offwhite 100%);
+  width: 100%;
+  .text {
+    color: $color-white;
+    padding: 2rem 2rem 20rem 2rem;
+    overflow: scroll;
+    h2 {
+      text-align: center;
+    }
+    p {
+      padding: 1rem 0 2rem;
+    }
+    .link{
+      text-decoration: underline;
+      color: $color-white
+    }
+    .logo{
+      display: flex;
+      justify-content: center;
+      gap: 2rem
+    }
+  }
+  .canvas{
+    position: fixed;
+    bottom: 0;
+    height: 30rem;
+    z-index: 1;
+    transform: translate(0 -2rem);
+  }
+}
