@@ -15,6 +15,7 @@
     import '$lib/styles/colors.scss';
     import '$lib/styles/fonts.scss';
     import '$lib/styles/style.scss';
+    import '$lib/styles/components/card.scss';
     import Card from "$lib/components/Card.svelte";
     import PrimaryButton from "$lib/components/PrimaryButton.svelte";
     import {faChevronLeft, faChevronRight} from "@fortawesome/free-solid-svg-icons";
@@ -35,9 +36,10 @@
 
     let currentSceneIndex: number;
     let expandCard = false;
-    let style = 'backgroundRotate'
     const scenesContent = get(scenesContentStore)
     $: content = scenesContent[currentSceneIndex]
+    $: componentStyle = expandCard ? 'componentExpand' : 'componentNotExpand'
+    $: buttonContainerStyle = expandCard ? 'buttonContainerCenter' : 'buttonContainerSpaceBetween'
 
 
     //Subscribe currentSceneIndex for display content
@@ -46,12 +48,7 @@
     });
 
     function handleExpandCard(){
-        expandCard = !expandCard
-        if(expandCard){
-            style = 'backgroundRotateExpand'
-        }else{
-            style = 'backgroundRotateNotExpand'
-        }
+        expandCard = !expandCard;
     }
 
     onMount(() => {
@@ -96,8 +93,8 @@
         </div>
     {:else }
         <div class="card">
-            <Card style={style}>
-                <div class="component">
+            <Card isExpend={expandCard} onCloseModal={() => handleExpandCard()}>
+                <div class={`component ${componentStyle}`}>
                     <div class="titleContainer">
                         <h3 class="text titleCard">{content.title}</h3>
                         <Pagination currentIndex={currentSceneIndex}/>
@@ -105,7 +102,7 @@
                     {#if expandCard}
                         <p class="content">{content.content}</p>
                     {/if}
-                    <div class="buttonContainer">
+                    <div class={`buttonContainer ${buttonContainerStyle}`}>
                         {#if !expandCard}
                             <p on:click={() => handleExpandCard()} class="text subTitle">{content.subTitle}</p>
                         {/if}
