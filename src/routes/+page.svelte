@@ -97,7 +97,7 @@
                 <div class={`component ${componentStyle}`}>
                     <div class="titleContainer">
                         <h3 class="text titleCard">{content.title}</h3>
-                        <Pagination currentIndex={currentSceneIndex}/>
+                        <Pagination currentIndex={currentSceneIndex} array={scenesContent}/>
                     </div>
                     {#if expandCard}
                         <p class="content">{content.content}</p>
