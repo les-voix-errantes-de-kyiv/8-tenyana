@@ -2,12 +2,7 @@
     import {createScene} from "$lib/three";
     import Title from "$lib/components/Title.svelte";
     import {
-        loadModel,
-        placeIslandModel,
-        placePlateformeModel1,
-        placePlateformeModel2,
-        placePlateformeModel3,
-        placePlateformeModel4, rotateScene, unRotateScene,
+        loadModel, rotateScene, unRotateScene,
         zoomCamera
     } from "$lib/functions";
     import {onMount} from "svelte";
@@ -52,22 +47,8 @@
     }
 
     onMount(() => {
+        loadModel()
         createScene(canvas)
-        loadModel('/assets/Island.glb').then((island: GLTF) => {
-            placeIslandModel(island)
-        })
-        loadModel('/assets/Plateforme_1.glb').then((plateforme: GLTF) => {
-            placePlateformeModel1(plateforme)
-        })
-        loadModel('/assets/Plateforme_2.glb').then((plateforme: GLTF) => {
-            placePlateformeModel2(plateforme)
-        })
-        loadModel('/assets/Plateforme_3.glb').then((plateforme: GLTF) => {
-            placePlateformeModel3(plateforme)
-        })
-        loadModel('/assets/Plateforme_4.glb').then((plateforme: GLTF) => {
-            placePlateformeModel4(plateforme)
-        })
     })
 </script>
 <div class="background">
