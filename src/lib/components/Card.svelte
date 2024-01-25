@@ -14,14 +14,14 @@
 </script>
 
 {#if isHomePage}
+    <div class="closeButton">
+        {#if isExpend}
+            <PrimaryButton title="Fermer" onClick={() => onCloseModal()}>
+                <Fa icon={faChevronDown} primaryColor="#4472CB" />
+            </PrimaryButton>
+        {/if}
+    </div>
     <div class={`${style} backgroundRotate`}>
-        <div class="closeButton">
-            {#if isExpend}
-                <PrimaryButton title="Fermer" onClick={() => onCloseModal()}>
-                    <Fa icon={faChevronDown} primaryColor="#4472CB" />
-                </PrimaryButton>
-            {/if}
-        </div>
         <slot />
     </div>
     {#if !isExpend}
