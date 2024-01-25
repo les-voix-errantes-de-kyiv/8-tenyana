@@ -10,6 +10,15 @@ type ScencesContent = {
 	image: string;
 };
 
+type AboutContent = {
+	name: string;
+	address: string;
+	link: string;
+	text: string;
+	mail?: string;
+	phone?: string;
+};
+
 export const sceneStore = writable(new Scene());
 export const cameraStore = writable(
 	new PerspectiveCamera(
@@ -71,5 +80,36 @@ export const plateformeMeshStore1 = writable(new Mesh());
 export const plateformeMeshStore2 = writable(new Mesh());
 export const plateformeMeshStore3 = writable(new Mesh());
 export const plateformeMeshStore4 = writable(new Mesh());
+export const aboutContentStore = readable<AboutContent[]>([
+	{
+		name: 'La maison Ukrainienne',
+		link: 'https://www.helloasso.com/associations/la-maison-ukrainienne',
+		address: '55 Av. du Maréchal de Lattre de Tassigny, 33700 Mérignac',
+		mail: 'contact@lamaisonukrainienne.org',
+		text: "La Maison Ukrainienne est une association à Bordeaux qui soutient l'intégration des femmes ukrainiennes en offrant des programmes linguistiques et culturels. "
+	},
+	{
+		name: 'ukraine amitié',
+		link: 'http://www.ukraineamitie.free.fr/',
+		address: '19 rue Père Louis de Jabrun - 33000 Bordeaux',
+		mail: 'ukraine.amitie@gmail.com',
+		phone: '07 80 18 87 87',
+		text: "Ukraine Amitié est une organisation qui promeut les liens d'amitié et d'entraide entre les Ukrainiens."
+	},
+	{
+		name: 'france horizon',
+		link: 'https://www.france-horizon.fr/',
+		address: 'FRANCE HORIZON - CHRS PESSAC - 33600',
+		phone: '05 57 89 09 09',
+		text: "France Horizon est une association engagée dans l'accompagnement des migrants et des réfugiés, travaillant pour faciliter leur intégration à travers des programmes d'accueil, de logement, et de soutien social."
+	},
+	{
+		name: 'la croix rouge',
+		link: 'https://www.croix-rouge.fr/',
+		address: '22-25 Rue des Terres Neuves, 33130 Bègles',
+		phone: '05 57 87 64 46',
+		text: "La Croix-Rouge est une organisation humanitaire, œuvrant pour le soutien et l'assistance aux personnes vulnérables, y compris les migrants, à travers des programmes d'urgence, d'accueil, et d'accompagnement social."
+	}
+]);
 
 export const dracoLoaderStore = writable(new DRACOLoader());

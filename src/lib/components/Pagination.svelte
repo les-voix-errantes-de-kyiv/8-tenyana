@@ -1,15 +1,13 @@
 <script lang="ts">
-    import {scenesContentStore} from "$lib/stores";
-    import {get} from "svelte/store";
     import '$lib/styles/components/pagination.scss'
 
-    export let currentIndex = 0
+    export let currentIndex = 0;
+    export let array;
 
-    const scenes = get(scenesContentStore);
 </script>
 
 <div class="container">
-    {#each scenes as _, index}
+    {#each array as _, index}
         {#if index === currentIndex}
             <div class="selectedItem item"></div>
         {:else}

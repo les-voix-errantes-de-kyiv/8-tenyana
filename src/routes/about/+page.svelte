@@ -1,9 +1,38 @@
 <script lang="ts">
-    import Title from "$lib/components/Title.svelte";
     import Card from "$lib/components/Card.svelte";
     import '$lib/styles/colors.scss';
     import '$lib/styles/fonts.scss';
     import '$lib/styles/style.scss';
+    import {get} from "svelte/store";
+    import {aboutContentStore} from "$lib/stores";
+    import {Fa} from "svelte-fa";
+    import {faChevronLeft, faChevronRight, faEnvelope, faGlobe, faLocationDot, faPhone} from "@fortawesome/free-solid-svg-icons";
+    import ArrowButton from "$lib/components/ArrowButton.svelte";
+    import Pagination from "$lib/components/Pagination.svelte";
+
+    let currentIndex = 0;
+
+    const aboutContents = get(aboutContentStore)
+
+    $: content = aboutContents[currentIndex]
+
+
+    function onPressLeft(){
+        if(currentIndex === 0){
+            currentIndex = aboutContents.length - 1
+            return
+        }
+        currentIndex = currentIndex - 1
+    }
+
+    function onPressRight(){
+        if(currentIndex === aboutContents.length - 1){
+            currentIndex = 0
+            return
+        }
+        currentIndex = currentIndex + 1
+    }
+
 </script>
 <div class="background about">
     <div class="title">
@@ -15,6 +44,39 @@
         <h2 class="uppercase">Associations</h2>
     </div>
     <div class="card">
-        <Card isHomePage={false} />
+        <Card isHomePage={false}>
+            <div class="component aboutComponent">
+                <div class="titleContainer">
+                    <ArrowButton icon={faChevronLeft} primaryColor="#FFFFFF" scale={1.5} onClick={() => onPressLeft()}/>
+                    <h3 >{content.name}</h3>
+                    <ArrowButton icon={faChevronRight} primaryColor="#FFFFFF" scale={1.5} onClick={() => onPressRight()}/>
+                </div>
+                <div class="pagination">
+                    <Pagination currentIndex={currentIndex} array={aboutContents} />
+                </div>
+                <div class="contentContainer">
+                    <div class="contentWithIcon">
+                        <img src="/assets/website.svg" alt="icon internet"/>
+                        <p>{content.link}</p>
+                    </div>
+                    <div class="contentWithIcon">
+                        <img src="/assets/adress.svg" alt="icon adresse"/>
+                        <p>{content.address}</p>
+                    </div>
+                    {#if content.mail}
+                        <div class="contentWithIcon">
+                            <img src="/assets/email.svg" alt="icon email"/>
+                            <p>{content.mail}</p>
+                        </div>
+                    {/if}
+                    {#if content.phone}
+                        <div class="contentWithIcon">
+                            <img src="/assets/phone.svg" alt="icon téléphone"/>
+                            <p>{content.phone}</p>
+                        </div>
+                    {/if}
+                </div>
+            </div>
+        </Card>
     </div>
 </div>
