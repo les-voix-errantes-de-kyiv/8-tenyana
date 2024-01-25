@@ -53,7 +53,7 @@
 
     onMount(() => {
         createScene(canvas)
-        loadModel('/assets/IslandV2.glb').then((island: GLTF) => {
+        loadModel('/assets/Island.glb').then((island: GLTF) => {
             placeIslandModel(island)
         })
         loadModel('/assets/Plateforme_1.glb').then((plateforme: GLTF) => {

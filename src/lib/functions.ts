@@ -12,12 +12,14 @@ import {
 	plateformeMeshStore2,
 	plateformeMeshStore3,
 	plateformeMeshStore4,
-	spotLightStore
+	spotLightStore,
+	dracoLoaderStore
 } from '$lib/stores';
 import { get } from 'svelte/store';
 import type { GLTF } from 'three/examples/jsm/loaders/GLTFLoader.js';
+import { DRACOLoader } from 'three/examples/jsm/loaders/DRACOLoader.js';
 import gsap from 'gsap';
-import * as THREE from 'three'
+import * as THREE from 'three';
 
 const scene = get(sceneStore);
 const camera = get(cameraStore);
@@ -80,6 +82,27 @@ export function placePlateformeModel4(model: GLTF) {
 
 export function loadModel(url: string) {
 	const gltfLoader = get(gltfLoaderStore);
+	const dracoLoader = get(dracoLoaderStore)
+	dracoLoader.setDecoderPath('/draco/');
+	dracoLoader.preload();
+	gltfLoader.setDRACOLoader(dracoLoader);
+	gltfLoader.load(
+		url,
+
+		(gltf) => {
+			const sceneGLTF = gltf.scene;
+			console.log(url, sceneGLTF)
+
+			scene.add(sceneGLTF);
+		},
+
+		function (xhr) {
+			console.log((xhr.loaded / xhr.total) * 100 + '% loaded');
+		},
+		function (error) {
+			console.log('An error happened :', error);
+		}
+	);
 	return gltfLoader.loadAsync(url);
 }
 
@@ -116,7 +139,7 @@ export function unRotateScene() {
 
 export function particles () {
 	const particlesGeometry = new THREE.BufferGeometry();
-	const count = 1500;
+	const count = 500;
 	const minDistance = 20;
 
 	const positions = new Float32Array(count * 3);

@@ -1,6 +1,7 @@
 import { Scene, PerspectiveCamera, Mesh, AmbientLight, Group, SpotLight } from 'three';
 import { readable, writable } from 'svelte/store';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
+import { DRACOLoader } from 'three/examples/jsm/loaders/DRACOLoader.js';
 
 type ScencesContent = {
 	title: string;
@@ -70,3 +71,5 @@ export const plateformeMeshStore1 = writable(new Mesh());
 export const plateformeMeshStore2 = writable(new Mesh());
 export const plateformeMeshStore3 = writable(new Mesh());
 export const plateformeMeshStore4 = writable(new Mesh());
+
+export const dracoLoaderStore = writable(new DRACOLoader());
