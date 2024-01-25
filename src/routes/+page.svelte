@@ -88,7 +88,7 @@
             </a>
             <label>-</label>
             <a href="/about">
-                <label>A propos</label>
+                <label>À propos</label>
             </a>
         </div>
     {:else }
@@ -96,7 +96,7 @@
             <Card isExpend={expandCard} onCloseModal={() => handleExpandCard()}>
                 <div class={`component ${componentStyle}`}>
                     <div class="titleContainer">
-                        <h3 class="text titleCard">{content.title}</h3>
+                        <h2 class="text titleCard">{content.title}</h2>
                         <Pagination currentIndex={currentSceneIndex} array={scenesContent}/>
                     </div>
                     {#if expandCard}

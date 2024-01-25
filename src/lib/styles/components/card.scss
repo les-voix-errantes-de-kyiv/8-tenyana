@@ -2,7 +2,7 @@
 
 .backgroundRotateExpand{
   transform: rotate(0deg) ;
-  max-height: 30rem;
+  max-height: 28rem;
 }
 .backgroundRotateNotExpand{
   transform: rotate(-4deg) translate(-20px, 20px) ;
@@ -14,6 +14,13 @@
 .componentExpand{
   transform: rotate(0deg);
 }
+.closeButton{
+  padding-bottom: 1rem;
+  position: absolute;
+  top: -1rem;
+  left: 2rem;
+  z-index: 2;
+}
 .backgroundRotate{
   background-color: $color-beige;
   padding: 2rem;
@@ -22,14 +29,11 @@
   z-index: 1;
   height: 100%;
   overflow: scroll;
-  .closeButton{
-    padding-bottom: 1rem;
-  }
   .component{
     display: flex;
     justify-content: space-between;
     flex-direction: column;
-    padding-bottom: 2rem;
+    padding-top: 1rem;
     .text{
       color: $color-blue;
       text-transform: uppercase;
@@ -43,7 +47,6 @@
       width: 70%;
       .titleCard{
         margin-bottom: 0.5rem;
-        font-size: 20px;
       }
     }
     .buttonContainerCenter{
