@@ -4,11 +4,10 @@
     import {
         loadModel,
         placeIslandModel,
-        placePlaneModel,
         placePlateformeModel1,
         placePlateformeModel2,
         placePlateformeModel3,
-        placePlateformeModel4,
+        placePlateformeModel4, rotateScene, unRotateScene,
         zoomCamera
     } from "$lib/functions";
     import {onMount} from "svelte";
@@ -18,6 +17,11 @@
     import '$lib/styles/style.scss';
     import Card from "$lib/components/Card.svelte";
     import PrimaryButton from "$lib/components/PrimaryButton.svelte";
+    import {faChevronLeft, faChevronRight} from "@fortawesome/free-solid-svg-icons";
+    import Pagination from "$lib/components/Pagination.svelte";
+    import ArrowButton from "$lib/components/ArrowButton.svelte";
+    import {get} from "svelte/store";
+    import {currentSceneIndexStore, scenesContentStore} from "$lib/stores";
 
 
     let canvas;
@@ -28,11 +32,29 @@
         zoomCamera()
     }
 
+    let currentSceneIndex: number;
+    let expandCard = false;
+    let style = 'backgroundRotate'
+    const scenesContent = get(scenesContentStore)
+    $: content = scenesContent[currentSceneIndex]
+
+
+    //Subscribe currentSceneIndex for display content
+    const unsubscribe = currentSceneIndexStore.subscribe((index) => {
+        currentSceneIndex = index
+    });
+
+    function handleExpandCard(){
+        expandCard = !expandCard
+        if(expandCard){
+            style = 'backgroundRotateExpand'
+        }else{
+            style = 'backgroundRotateNotExpand'
+        }
+    }
+
     onMount(() => {
         createScene(canvas)
-        loadModel('/assets/Avion.glb').then((model: GLTF) => {
-            placePlaneModel(model)
-        })
         loadModel('/assets/IslandV2.glb').then((island: GLTF) => {
             placeIslandModel(island)
         })
@@ -70,7 +92,27 @@
         </div>
     {:else }
         <div class="card">
-            <Card />
+            <Card style={style}>
+                <div class="component">
+                    <div class="titleContainer">
+                        <h3 class="text titleCard">{content.title}</h3>
+                        <Pagination currentIndex={currentSceneIndex}/>
+                    </div>
+                    {#if expandCard}
+                        <p class="content">{content.content}</p>
+                    {/if}
+                    <div class="buttonContainer">
+                        {#if !expandCard}
+                            <p on:click={() => handleExpandCard()} class="text subTitle">{content.subTitle}</p>
+                        {/if}
+                        <div class="buttons">
+                            <ArrowButton onClick={() => unRotateScene()} icon={faChevronLeft} primaryColor='#FFFFFF' scale={1.5} />
+                            <ArrowButton onClick={() => rotateScene()} icon={faChevronRight} primaryColor="#FFFFFF" scale={1.5} />
+                        </div>
+                    </div>
+                </div>
+                <img src={content.image} alt="icon de la scène" class="image"/>
+            </Card>
         </div>
     {/if}
 </div>
