@@ -1,4 +1,4 @@
-import { type WebGLRenderer } from 'three';
+import { Mesh, type WebGLRenderer } from 'three';
 import {
 	sceneStore,
 	cameraStore,
@@ -55,45 +55,19 @@ export function initObjectScene() {
 	initCameraScene();
 }
 
-export function placeIslandModel(model: GLTF) {
-	const meshModel = model.scene.children[0];
-	islandMesh.add(meshModel);
-}
-
-export function placePlateformeModel1(model: GLTF) {
-	const meshModel = model.scene.children[0];
-	plateformeMesh1.add(meshModel);
-}
-
-export function placePlateformeModel2(model: GLTF) {
-	const meshModel = model.scene.children[0];
-	plateformeMesh2.add(meshModel);
-}
-
-export function placePlateformeModel3(model: GLTF) {
-	const meshModel = model.scene.children[0];
-	plateformeMesh3.add(meshModel);
-}
-
-export function placePlateformeModel4(model: GLTF) {
-	const meshModel = model.scene.children[0];
-	plateformeMesh4.add(meshModel);
-}
-
-export function loadModel(url: string) {
+export function loadModel() {
 	const gltfLoader = get(gltfLoaderStore);
-	const dracoLoader = get(dracoLoaderStore)
+	const dracoLoader = get(dracoLoaderStore);
 	dracoLoader.setDecoderPath('/draco/');
 	dracoLoader.preload();
 	gltfLoader.setDRACOLoader(dracoLoader);
+
 	gltfLoader.load(
-		url,
+		'/assets/Island.glb',
 
 		(gltf) => {
 			const sceneGLTF = gltf.scene;
-			console.log(url, sceneGLTF)
-
-			scene.add(sceneGLTF);
+			islandMesh.add(sceneGLTF);
 		},
 
 		function (xhr) {
@@ -103,7 +77,67 @@ export function loadModel(url: string) {
 			console.log('An error happened :', error);
 		}
 	);
-	return gltfLoader.loadAsync(url);
+	gltfLoader.load(
+		'/assets/Plateforme_1.glb',
+
+		(gltf) => {
+			const sceneGLTF = gltf.scene;
+			plateformeMesh1.add(sceneGLTF);
+		},
+
+		function (xhr) {
+			console.log((xhr.loaded / xhr.total) * 100 + '% loaded');
+		},
+		function (error) {
+			console.log('An error happened :', error);
+		}
+	);
+	gltfLoader.load(
+		'/assets/Plateforme_2.glb',
+
+		(gltf) => {
+			const sceneGLTF = gltf.scene;
+			plateformeMesh2.add(sceneGLTF);
+		},
+
+		function (xhr) {
+			console.log((xhr.loaded / xhr.total) * 100 + '% loaded');
+		},
+		function (error) {
+			console.log('An error happened :', error);
+		}
+	);
+	gltfLoader.load(
+		'assets/Plateforme_3.glb',
+
+		(gltf) => {
+			const sceneGLTF = gltf.scene;
+			plateformeMesh3.add(sceneGLTF);
+		},
+
+		function (xhr) {
+			console.log((xhr.loaded / xhr.total) * 100 + '% loaded');
+		},
+		function (error) {
+			console.log('An error happened :', error);
+		}
+	);
+	gltfLoader.load(
+		'/assets/Plateforme_4.glb',
+
+		(gltf) => {
+			const sceneGLTF = gltf.scene;
+			plateformeMesh4.add(sceneGLTF);
+		},
+
+		function (xhr) {
+			console.log((xhr.loaded / xhr.total) * 100 + '% loaded');
+		},
+		function (error) {
+			console.log('An error happened :', error);
+		}
+	);
+	// return gltfLoader.loadAsync(url);
 }
 
 export function makeGroup() {
@@ -137,7 +171,7 @@ export function unRotateScene() {
 	onPressLeft();
 }
 
-export function particles () {
+export function particles() {
 	const particlesGeometry = new THREE.BufferGeometry();
 	const count = 500;
 	const minDistance = 20;
@@ -146,13 +180,13 @@ export function particles () {
 
 	for (let i = 0; i < count * 3; i += 3) {
 		let x, y, z;
-		
+
 		do {
 			x = (Math.random() - 0.5) * 50;
 			y = (Math.random() - 0.5) * 50;
 			z = (Math.random() - 0.5) * 50;
-		} while (Math.sqrt(x*x + y*y + z*z) < minDistance);
-		
+		} while (Math.sqrt(x * x + y * y + z * z) < minDistance);
+
 		positions[i] = x;
 		positions[i + 1] = y;
 		positions[i + 2] = z;
@@ -187,4 +221,3 @@ function onPressLeft() {
 	}
 	currentSceneIndexStore.update((index) => index - 1);
 }
-

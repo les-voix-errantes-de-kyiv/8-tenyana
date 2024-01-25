@@ -3,7 +3,7 @@ import { readable, writable } from 'svelte/store';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 import { DRACOLoader } from 'three/examples/jsm/loaders/DRACOLoader.js';
 
-type ScencesContent = {
+type ScenesContent = {
 	title: string;
 	subTitle: string;
 	content: string;
@@ -34,7 +34,7 @@ export const spotLightStore = writable(new SpotLight());
 export const gltfLoaderStore = writable(new GLTFLoader());
 export const islandAndSceneGroupStore = writable(new Group());
 export const islandMeshStore = writable(new Mesh());
-export const scenesContentStore = readable<ScencesContent[]>([
+export const scenesContentStore = readable<ScenesContent[]>([
 	{
 		title: 'Ukraine - 1',
 		subTitle: 'Avant la guerre',
