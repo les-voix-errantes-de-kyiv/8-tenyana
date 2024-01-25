@@ -83,7 +83,7 @@ export const plateformeMeshStore4 = writable(new Mesh());
 export const aboutContentStore = readable<AboutContent[]>([
 	{
 		name: 'La maison Ukrainienne',
-		link: 'https://www.helloasso.com/associations/la-maison-ukrainienne',
+		link: 'Lien Hello Asso Maison Urkrainienne',
 		address: '55 Av. du Maréchal de Lattre de Tassigny, 33700 Mérignac',
 		mail: 'contact@lamaisonukrainienne.org',
 		text: "La Maison Ukrainienne est une association à Bordeaux qui soutient l'intégration des femmes ukrainiennes en offrant des programmes linguistiques et culturels. "
