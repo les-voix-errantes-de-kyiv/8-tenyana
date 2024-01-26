@@ -8,7 +8,7 @@
     background: linear-gradient(180deg, $color-blue 0%, $color-lightblue 22%, $color-pink 62%, $color-offwhite 100%);
     position: relative;
     z-index: 1;
-    min-height: 100vh;
+    height: 100vh;
     overflow: hidden;
     .header {
         position: absolute;
@@ -70,8 +70,7 @@
             z-index: 1;
             top: 0;
             right: -100%;
-            background-color: $color-beige;
-            opacity: 0.9;
+            background-color: rgb(255, 251, 236, 0.9);
             transition: right 0.5s ease;
             &.active {
                 right: 0;
