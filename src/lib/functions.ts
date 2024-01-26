@@ -95,6 +95,7 @@ export function zoomCamera() {
 	gsap.to(camera.position, {
 		x: 25,
 		y: 8.8,
+		z: -3,
 		duration: 1,
 		ease: 'power2.inOut'
 	});
