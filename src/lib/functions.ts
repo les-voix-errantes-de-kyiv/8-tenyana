@@ -20,7 +20,10 @@ import {
 	aboutPlateformeMeshStore1,
 	aboutPlateformeMeshStore2,
 	aboutPlateformeMeshStore3,
-	aboutPlateformeMeshStore4
+	aboutPlateformeMeshStore4,
+	directionalLightStore1,
+	directionalLightStore2,
+	directionalLightStore3
 } from '$lib/stores';
 import { get } from 'svelte/store';
 import gsap from 'gsap';
@@ -37,6 +40,9 @@ const plateformeMesh3 = get(plateformeMeshStore3);
 const plateformeMesh4 = get(plateformeMeshStore4);
 const islandAndSceneGroup = get(islandAndSceneGroupStore);
 const sceneContent = get(scenesContentStore);
+const directionalLight1 = get(directionalLightStore1);
+const directionalLight2 = get(directionalLightStore2);
+const directionalLight3 = get(directionalLightStore3);
 
 const aboutScene = get(aboutSceneStore);
 const aboutIslandMesh = get(aboutIslandMeshStore);
@@ -55,9 +61,45 @@ export const initCameraScene = (isAboutScene: boolean) => {
 	camera.lookAt(islandMesh.position);
 };
 
+export function initLight(isAboutPage: boolean) {
+	scene.add(ambientLight);
+	scene.add(spotLight);
+
+	directionalLight1.castShadow = true;
+	directionalLight1.position.set(0, 9.229, -24.504);
+	directionalLight1.color.set(0xffffff);
+	directionalLight1.intensity = 2;
+
+	directionalLight2.castShadow = true;
+	directionalLight2.position.set(13, 27, 18);
+	directionalLight2.color.set(0x4d82ff);
+	directionalLight2.intensity = 0.75;
+
+	directionalLight3.castShadow = true;
+	directionalLight3.position.set(-18.216, 22.441, 31.876);
+	directionalLight3.intensity = 0.5;
+	directionalLight3.color.set(0xf3c3f9);
+
+	if (isAboutPage) {
+		aboutScene.add(directionalLight1);
+		aboutScene.add(directionalLight2);
+		aboutScene.add(directionalLight3);
+	} else {
+		scene.add(directionalLight1);
+		scene.add(directionalLight2);
+		scene.add(directionalLight3);
+	}
+}
+
 export function zoomCamera() {
-	camera.position.set(25, 8.8, 0);
-	camera.lookAt(islandMesh.position);
+	gsap.to(camera.position, {
+		x: 25,
+		y: 8.8,
+		z: -3,
+		duration: 1,
+		ease: 'power2.inOut'
+	});
+	camera.lookAt(plateformeMesh1.position);
 }
 
 export function resize(renderer: WebGLRenderer) {
@@ -73,8 +115,7 @@ export function initObjectScene(isAboutPage: boolean) {
 		initCameraScene(isAboutPage);
 		return;
 	}
-	scene.add(ambientLight);
-	scene.add(spotLight);
+	initLight(isAboutPage);
 	initCameraScene(isAboutPage);
 }
 
@@ -142,6 +183,7 @@ export function makeGroup(isAboutPage: boolean) {
 	islandAndSceneGroup.add(plateformeMesh2);
 	islandAndSceneGroup.add(plateformeMesh3);
 	islandAndSceneGroup.add(plateformeMesh4);
+	islandAndSceneGroup.rotation.y = Math.PI * 0.03;
 	scene.add(islandAndSceneGroup);
 }
 
@@ -216,13 +258,4 @@ function onPressLeft() {
 		return;
 	}
 	currentSceneIndexStore.update((index) => index - 1);
-}
-
-export function removeIslandFromScene() {
-	islandMesh.removeFromParent();
-	plateformeMesh1.removeFromParent();
-	plateformeMesh2.removeFromParent();
-	plateformeMesh3.removeFromParent();
-	plateformeMesh4.removeFromParent();
-	islandAndSceneGroup.removeFromParent();
 }

@@ -5,7 +5,7 @@
     import '$lib/styles/aboutPage.scss'
     import {onDestroy, onMount} from "svelte";
     import {createAboutScene} from "$lib/three";
-    import {loadModel, removeIslandFromScene} from "$lib/functions";
+    import {loadModel} from "$lib/functions";
     import Header from "$lib/components/Header.svelte";
 
     let isHomePage = true;
@@ -15,9 +15,6 @@
         createAboutScene(canvas);
         loadModel(true);
     })
-    // onDestroy(() => {
-    //     removeIslandFromScene()
-    // })
 
 </script>
 <Header isHomePage={isHomePage}/>

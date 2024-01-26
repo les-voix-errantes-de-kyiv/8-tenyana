@@ -1,9 +1,7 @@
-import { Group, Mesh, Scene, WebGLRenderer } from 'three';
+import { WebGLRenderer } from 'three';
 import {
 	sceneStore,
 	cameraStore,
-	islandMeshStore,
-	islandAndSceneGroupStore,
 	aboutSceneStore,
 	aboutIslandMeshStore,
 	aboutIslandMeshGroupStore
@@ -11,19 +9,16 @@ import {
 import { get } from 'svelte/store';
 import { initObjectScene, makeGroup, particles, resize } from '$lib/functions';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
-// import { addDebug } from '$lib/guiDebug';
 
 const scene = get(sceneStore);
 const camera = get(cameraStore);
-const islandMesh = get(islandMeshStore);
-const islandMeshGroup = get(islandAndSceneGroupStore);
 
 const aboutScene = get(aboutSceneStore);
 const aboutIslandMesh = get(aboutIslandMeshStore);
 const aboutIslandMeshGroup = get(aboutIslandMeshGroupStore);
 
 let renderer: WebGLRenderer;
-let controls: OrbitControls;
+// let controls: OrbitControls;
 
 function animate() {
 	requestAnimationFrame(animate);
@@ -34,8 +29,8 @@ export const createScene = (el: HTMLCanvasElement) => {
 	renderer = new WebGLRenderer({ antialias: true, canvas: el, alpha: true });
 	renderer.setClearColor(0x000000, 0);
 	renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-	controls = new OrbitControls(camera, renderer.domElement);
-	controls.enableDamping = true;
+	// controls = new OrbitControls(camera, renderer.domElement);
+	// controls.enableDamping = true;
 	resize(renderer);
 	animate();
 	initObjectScene(false);
@@ -44,7 +39,7 @@ export const createScene = (el: HTMLCanvasElement) => {
 };
 
 function animateAboutScene() {
-	aboutIslandMeshGroup.rotation.y = aboutIslandMeshGroup.rotation.y + Math.PI * 0.005;
+	aboutIslandMeshGroup.rotation.y = aboutIslandMeshGroup.rotation.y + Math.PI * 0.002;
 	requestAnimationFrame(animateAboutScene);
 	renderer.render(aboutScene, camera);
 }

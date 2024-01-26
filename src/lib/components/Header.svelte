@@ -1,6 +1,7 @@
 <script lang="ts">
     import PrimaryButton from "$lib/components/PrimaryButton.svelte";
     import {goto} from "$app/navigation";
+    import '$lib/styles/style.scss'
     export let isHomePage = true
 
     let isOpen = false;

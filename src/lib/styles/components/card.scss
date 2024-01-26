@@ -104,6 +104,10 @@
       flex-direction: row;
       gap: 1rem;
       align-items: center;
+      a{
+        color: $color-blue;
+        text-decoration: underline;
+      }
     }
     .titleContainer {
       width: 100%;
@@ -115,10 +119,7 @@
       color: $color-blue;
       text-transform: uppercase;
     }
-    .pagination{
-      display: flex;
-      justify-content: center;
-    }
+
   }
 }
 .backgroundBehind{
