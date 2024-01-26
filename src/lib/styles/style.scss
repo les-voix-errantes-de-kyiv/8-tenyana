@@ -129,18 +129,21 @@
     .card{
         position: absolute;
         bottom: 0;
-        left: 0;
+        right: 0;
         width: 100%;
+        max-width: 30rem;
     }
 }
-
 .about{
     overflow: hidden;
+    display: flex;
     flex-direction: column;
+    justify-content: center;
     background: linear-gradient(180deg, $color-blue 0%, $color-lightblue 50%, $color-pink 80%, $color-offwhite 100%);
     .text {
         color: $color-white;
         padding: 100px 24px 0;
+        max-width: 30rem;
         h2 {
             text-align: center;
         }
@@ -148,9 +151,11 @@
             padding: 24px 0 48px;
         }
     }
-    .card {
-        position: unset;
-        transform: rotate(-4deg);
+    .cardAbout {
+        display: flex;
+        justify-content: center;
         padding-top: 24px;
+        max-width: 30rem;
     }
 }
+

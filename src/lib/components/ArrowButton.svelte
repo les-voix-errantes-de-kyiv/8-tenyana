@@ -1,6 +1,7 @@
 <script lang="ts">
     import type {IconDefinition} from "@fortawesome/free-brands-svg-icons";
     import '$lib/styles/components/arrowButton.scss'
+    import {Fa} from "svelte-fa";
 
     export let onClick: () => void
     export let icon: IconDefinition
