@@ -67,7 +67,7 @@
                 </a>
                 <label>-</label>
                 <a href="/about">
-                    <label>A propos</label>
+                    <label>À propos</label>
                 </a>
             </div>
         </div>

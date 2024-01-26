@@ -6,6 +6,6 @@
     <h2>The Story of</h2>
     <h1>TETYANA</h1>
     {#if isHomePage}
-        <p>Découvrez l'histoire de Tetyana, entre Ukraine et France</p>
+        <p>De l’Ukraine à la France, suivez le parcours migratoire déchirant de Tetyena et de son fils.</p>
     {/if}
 </div>
