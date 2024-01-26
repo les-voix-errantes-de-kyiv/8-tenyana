@@ -68,13 +68,13 @@
                         {#if content.mail}
                             <div class="contentWithIcon">
                                 <img src="/assets/email.svg" alt="icon email"/>
-                                <p>{content.mail}</p>
+                                <a href={`mailto:${content.mail}`}>{content.mail}</a>
                             </div>
                         {/if}
                         {#if content.phone}
                             <div class="contentWithIcon">
                                 <img src="/assets/phone.svg" alt="icon téléphone"/>
-                                <p>{content.phone}</p>
+                                <a href={`tel:${content.phone}`}>{content.phone}</a>
                             </div>
                         {/if}
                         <p>{content.text}</p>
