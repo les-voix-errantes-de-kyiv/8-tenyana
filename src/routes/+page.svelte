@@ -57,20 +57,20 @@
     <div class="title">
         <Title />
     </div>
-        <div class="absolute">
-            <div class="primaryButton">
-                <PrimaryButton title="Débuter l'histoire" onClick={() => startExperience()} />
-            </div>
-            <div class="homepageLinks uppercase">
-                <a href="/helps">
-                    <label>Soutenir</label>
-                </a>
-                <label>-</label>
-                <a href="/about">
-                    <label>À propos</label>
-                </a>
-            </div>
+    <div class="absolute">
+        <div class="primaryButton">
+            <PrimaryButton title="Débuter l'histoire" onClick={() => startExperience()} />
         </div>
+        <div class="homepageLinks uppercase">
+            <a href="/helps">
+                <label>Soutenir</label>
+            </a>
+            <label>-</label>
+            <a href="/about">
+                <label>À propos</label>
+            </a>
+        </div>
+    </div>
     {:else }
         <Header isHomePage={true} />
         <div class="card">

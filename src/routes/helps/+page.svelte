@@ -38,8 +38,6 @@
 </script>
 <div class="background aboutPage">
     <Header isHomePage={true}/>
-    <div class="title">
-    </div>
     <div class="containerAbout">
         <div class="text">
             <h2 class="uppercase">apporter son soutien</h2>

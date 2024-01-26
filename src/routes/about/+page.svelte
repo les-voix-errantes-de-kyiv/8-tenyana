@@ -19,8 +19,6 @@
 </script>
 <Header isHomePage={isHomePage}/>
 <div class="container">
-<!--    <div class="title">-->
-<!--    </div>-->
     <div class="text">
         <h2 class="uppercase">À propos</h2>
         <p>D’après la véritable histoire de Tetyana, une femme forte et indépendante, qui a subi un parcours migratoire déchirant, quittant son mari et sa mère, pour assurer un futur plus stable à son fils.</p>
