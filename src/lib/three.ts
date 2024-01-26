@@ -3,7 +3,6 @@ import { sceneStore, cameraStore, islandMeshStore, islandAndSceneGroupStore } fr
 import { get } from 'svelte/store';
 import { initObjectScene, makeGroup, particles, resize } from '$lib/functions';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
-import { addDebug } from '$lib/guiDebug';
 // import { addDebug } from '$lib/guiDebug';
 
 const scene = get(sceneStore);
@@ -29,7 +28,6 @@ export const createScene = (el: HTMLCanvasElement) => {
 	animate();
 	initObjectScene();
 	makeGroup();
-	// addDebug();
 	particles();
 };
 
