@@ -46,7 +46,7 @@
     }
 
     onMount(() => {
-        loadModel()
+        loadModel(false)
         createScene(canvas)
     })
 </script>

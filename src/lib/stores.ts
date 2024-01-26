@@ -113,3 +113,11 @@ export const aboutContentStore = readable<AboutContent[]>([
 ]);
 
 export const dracoLoaderStore = writable(new DRACOLoader());
+
+export const aboutSceneStore = writable(new Scene());
+export const aboutIslandMeshStore = writable(new Mesh());
+export const aboutIslandMeshGroupStore = writable(new Group());
+export const aboutPlateformeMeshStore1 = writable(new Mesh());
+export const aboutPlateformeMeshStore2 = writable(new Mesh());
+export const aboutPlateformeMeshStore3 = writable(new Mesh());
+export const aboutPlateformeMeshStore4 = writable(new Mesh());
