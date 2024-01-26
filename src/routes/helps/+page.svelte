@@ -9,6 +9,7 @@
     import ArrowButton from "$lib/components/ArrowButton.svelte";
     import Pagination from "$lib/components/Pagination.svelte";
     import Title from '$lib/components/Title.svelte'
+    import Header from "$lib/components/Header.svelte";
 
     let currentIndex = 0;
 
@@ -36,7 +37,8 @@
 </script>
 <div class="background about">
     <div class="title">
-        <Title isHomePage={false}/>
+<!--        <Title isHomePage={false}/>-->
+        <Header isHomePage={true}/>
     </div>
     <div class="text">
         <h2 class="uppercase">apporter son soutien</h2>
