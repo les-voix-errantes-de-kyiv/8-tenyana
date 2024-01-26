@@ -1,5 +1,5 @@
 @import 'colors';
-
+@import 'fonts';
 .container{
   background: rgb(66,113,203);
   background: linear-gradient(180deg, $color-blue 0%, $color-lightblue 22%, $color-pink 62%, $color-offwhite 100%);
@@ -9,6 +9,9 @@
   flex-direction: column;
   align-items: center;
   .text {
+    .name{
+      font-weight: 500;
+    }
     color: $color-white;
     padding: 2rem 2rem 20rem 2rem;
     overflow: scroll;
@@ -18,6 +21,7 @@
     }
     p {
       padding: 1rem 0 2rem;
+      font-family: $font-main-Regular;
     }
     .link{
       text-decoration: underline;

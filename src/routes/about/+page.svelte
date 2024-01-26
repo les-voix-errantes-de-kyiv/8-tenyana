@@ -25,12 +25,12 @@
         <p>Si vous souhaitez contacter Tetyana : LinkedIn : <a class="link" href="https://www.linkedin.com/in/tetyana-gerasymchuk-08b8b913a/">Tetyana Gerasymchuk</a> </p>
         <div class="text-center">
             <p>Un projet étudiant réalisé par :</p>
-            <div class="uppercase">
+            <div class="uppercase name">
                 <p>Auréliane Dor</p>
-                <p>Maxime Lust le giga BG</p>
-                <p>Leïly coquard misono la DA en or</p>
-                <p>jason nago le 3D artiste fou</p>
-                <p>safiya seddiki la grosse nulloss</p>
+                <p>Maxime Lust</p>
+                <p>Leïly coquard misono</p>
+                <p>jason nago</p>
+                <p>Safiya seddiki</p>
             </div>
         </div>
         <div class="logo">
