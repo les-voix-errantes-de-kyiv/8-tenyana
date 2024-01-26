@@ -61,7 +61,7 @@ export const initCameraScene = (isAboutScene: boolean) => {
 	camera.lookAt(islandMesh.position);
 };
 
-export function initLight() {
+export function initLight(isAboutPage: boolean) {
 	scene.add(ambientLight);
 	scene.add(spotLight);
 
@@ -69,19 +69,26 @@ export function initLight() {
 	directionalLight1.position.set(0, 9.229, -24.504);
 	directionalLight1.color.set(0xffffff);
 	directionalLight1.intensity = 2;
-	scene.add(directionalLight1);
 
 	directionalLight2.castShadow = true;
 	directionalLight2.position.set(13, 27, 18);
 	directionalLight2.color.set(0x4d82ff);
 	directionalLight2.intensity = 0.75;
-	scene.add(directionalLight2);
 
 	directionalLight3.castShadow = true;
 	directionalLight3.position.set(-18.216, 22.441, 31.876);
 	directionalLight3.intensity = 0.5;
 	directionalLight3.color.set(0xf3c3f9);
-	scene.add(directionalLight3);
+
+	if (isAboutPage) {
+		aboutScene.add(directionalLight1);
+		aboutScene.add(directionalLight2);
+		aboutScene.add(directionalLight3);
+	} else {
+		scene.add(directionalLight1);
+		scene.add(directionalLight2);
+		scene.add(directionalLight3);
+	}
 }
 
 export function zoomCamera() {
@@ -107,7 +114,7 @@ export function initObjectScene(isAboutPage: boolean) {
 		initCameraScene(isAboutPage);
 		return;
 	}
-	initLight();
+	initLight(isAboutPage);
 	initCameraScene(isAboutPage);
 }
 
