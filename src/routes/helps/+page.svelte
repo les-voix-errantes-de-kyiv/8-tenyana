@@ -49,7 +49,7 @@
                 <div class="component aboutComponent">
                     <div class="titleContainer">
                         <ArrowButton icon={faChevronLeft} primaryColor="#FFFFFF" scale={1.5} onClick={() => onPressLeft()}/>
-                        <h3 >{content.name}</h3>
+                        <h3>{content.name}</h3>
                         <ArrowButton icon={faChevronRight} primaryColor="#FFFFFF" scale={1.5} onClick={() => onPressRight()}/>
                     </div>
                     <div class="pagination">
