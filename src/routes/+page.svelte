@@ -51,12 +51,12 @@
     })
 </script>
 <div class="background">
-    <Header isHomePage={isHomePage}/>
-    <div class="title">
-        <Title isHomePage={isHomePage}/>
-    </div>
     <canvas id="three" bind:this={canvas}></canvas>
     {#if isHomePage}
+    <Header isHomePage={false}/>
+    <div class="title">
+        <Title />
+    </div>
         <div class="absolute">
             <div class="primaryButton">
                 <PrimaryButton title="Débuter l'histoire" onClick={() => startExperience()} />
@@ -72,6 +72,7 @@
             </div>
         </div>
     {:else }
+        <Header isHomePage={true} />
         <div class="card">
             <Card isExpend={expandCard} onCloseModal={() => handleExpandCard()}>
                 <div class={`component ${componentStyle}`}>

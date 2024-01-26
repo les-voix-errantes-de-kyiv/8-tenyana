@@ -10,86 +10,6 @@
     z-index: 1;
     height: 100svh;
     overflow: hidden;
-    .header {
-        position: absolute;
-        width: 100%;
-        #openBtn {
-            display: flex;
-            justify-content: flex-end;
-            .burger-icon {
-                margin: 24px;
-                z-index: 10;
-                &.active {
-                    span {
-                        background-color: $color-blue;
-                        &:nth-child(1) {
-                            transform: translateY(9px) rotate(45deg);
-                            transition: all 0.3s ease-out;
-                        }
-                        &:nth-child(2) {
-                            opacity: 0;
-                            transition: all 0.3s ease-out;
-                        }
-                        &:nth-child(3) {
-                            transform: translateY(-9px) rotate(-45deg);
-                            transition: all 0.3s ease-out;
-                        }
-                    }
-                }
-                span {
-                    display: block;
-                    width: 24px;
-                    height: 3px;
-                    background-color: $color-white;
-                    margin: 6px 0;
-                    border-radius: 25px;
-                    &:nth-child(1) {
-                        transform: translateY(0px) rotate(0deg);
-                        transition: all 0.3s ease-out;
-                    }
-                    &:nth-child(2) {
-                        opacity: 1;
-                        transition: all 0.3s ease-out;
-                    }
-                    &:nth-child(3) {
-                        transform: translateY(0px) rotate(0deg);
-                        transition: all 0.3s ease-out;
-                    }
-                }
-            }
-        }
-        nav {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            gap: 24px;
-            height: 100%;
-            width: 100%;
-            position: fixed;
-            z-index: 1;
-            top: 0;
-            right: -100%;
-            background-color: rgb(255, 251, 236, 0.9);
-            transition: right 0.5s ease;
-            &.active {
-                right: 0;
-            }
-            a {
-                font-weight: 600;
-                text-decoration: none;
-                color: $color-blue;
-                display: block;
-                transition: 0.3s;
-                &.uppercase {
-                    display: flex;
-                    align-items: center;
-                    gap: 6px;
-                    opacity: 1;
-                }
-            }
-        }
-    }
     .primaryButton{
         position: absolute;
         bottom: 80px;
@@ -134,7 +54,149 @@
     }
 }
 
+
+.header {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    .backButton {
+        position: absolute;
+        top: 27px;
+        left: 24px;
+        z-index: 3;
+        &.active {
+            svg {
+                path {
+                    stroke: $color-blue;
+                    transition: all 0.5s ease-out;
+                }
+            }
+            a {
+                color: $color-blue;
+                transition: all 0.5s ease-out;
+            }
+        }
+        a {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+            color: $color-white;
+        }
+    }
+    .titleContainer {
+        position: absolute;
+        top: 1rem;
+        left: 50%;
+        transform: translate(-50%);
+        text-align: center;
+        color: $color-white;
+        z-index: 3;
+        &.active {
+            color: $color-blue;
+            transition: all 0.5s ease-out;
+        }
+        label {
+            font-weight: 400;
+        }
+        h2 {
+            margin-top: -6px;
+            letter-spacing: 1.6px;
+        }
+    }
+    #openBtn {
+        display: flex;
+        justify-content: flex-end;
+        .burger-icon {
+            margin: 24px;
+            z-index: 10;
+            &.active {
+                span {
+                    background-color: $color-blue;
+                    &:nth-child(1) {
+                        transform: translateY(9px) rotate(45deg);
+                        transition: all 0.3s ease-out;
+                    }
+                    &:nth-child(2) {
+                        opacity: 0;
+                        transition: all 0.3s ease-out;
+                    }
+                    &:nth-child(3) {
+                        transform: translateY(-9px) rotate(-45deg);
+                        transition: all 0.3s ease-out;
+                    }
+                }
+            }
+            span {
+                display: block;
+                width: 24px;
+                height: 3px;
+                background-color: $color-white;
+                margin: 6px 0;
+                border-radius: 25px;
+                &:nth-child(1) {
+                    transform: translateY(0px) rotate(0deg);
+                    transition: all 0.3s ease-out;
+                }
+                &:nth-child(2) {
+                    opacity: 1;
+                    transition: all 0.3s ease-out;
+                }
+                &:nth-child(3) {
+                    transform: translateY(0px) rotate(0deg);
+                    transition: all 0.3s ease-out;
+                }
+            }
+        }
+    }
+    nav {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 24px;
+        height: 100%;
+        width: 100%;
+        position: fixed;
+        z-index: 2;
+        top: 0;
+        right: -100%;
+        background-color: rgb(255, 251, 236, 0.9);
+        transition: right 0.5s ease;
+        &.active {
+            right: 0;
+        }
+        a {
+            font-weight: 600;
+            text-decoration: none;
+            color: $color-blue;
+            display: block;
+            transition: 0.3s;
+            &.uppercase {
+                display: flex;
+                align-items: center;
+                gap: 6px;
+                opacity: 1;
+            }
+        }
+        img {
+            position: absolute;
+            bottom: 1rem;
+        }
+    }
+    .sound {
+        position: absolute;
+        top: 1rem;
+        right: 20px;
+        z-index: 3;
+        &.active {
+            color: $color-blue;
+        }
+    }
+}
+
 .about{
+    height: 100%;
     overflow: hidden;
     flex-direction: column;
     background: linear-gradient(180deg, $color-blue 0%, $color-lightblue 50%, $color-pink 80%, $color-offwhite 100%);

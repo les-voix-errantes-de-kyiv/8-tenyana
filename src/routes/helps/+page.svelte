@@ -11,6 +11,7 @@
     import Title from '$lib/components/Title.svelte'
     import Header from "$lib/components/Header.svelte";
 
+    let isHomePage = true;
     let currentIndex = 0;
 
     const aboutContents = get(aboutContentStore)
@@ -36,9 +37,9 @@
 
 </script>
 <div class="background about">
+    <Header isHomePage={true}/>
     <div class="title">
 <!--        <Title isHomePage={false}/>-->
-        <Header isHomePage={true}/>
     </div>
     <div class="text">
         <h2 class="uppercase">apporter son soutien</h2>

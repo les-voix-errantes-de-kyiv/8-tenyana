@@ -1,13 +1,14 @@
 <script lang="ts">
     import '$lib/styles/colors.scss';
     import '$lib/styles/fonts.scss';
+    import '$lib/styles/style.scss';
     import '$lib/styles/aboutPage.scss'
     import {onDestroy, onMount} from "svelte";
     import {createAboutScene} from "$lib/three";
     import {loadModel, removeIslandFromScene} from "$lib/functions";
     import Header from "$lib/components/Header.svelte";
 
-
+    let isHomePage = true;
     let canvas: HTMLCanvasElement;
 
     onMount(() => {
@@ -19,9 +20,9 @@
     // })
 
 </script>
+<Header isHomePage={isHomePage}/>
 <div class="container">
 <!--    <div class="title">-->
-        <Header isHomePage={false}/>
 <!--    </div>-->
     <div class="text">
         <h2 class="uppercase">À propos</h2>
@@ -32,10 +33,10 @@
             <p>Un projet étudiant réalisé par :</p>
             <div class="uppercase">
                 <p>Auréliane Dor</p>
-                <p>Maxime Lust le giga BG</p>
-                <p>Leïly coquard misono la DA en or</p>
-                <p>jason nago le 3D artiste fou</p>
-                <p>safiya seddiki la grosse nulloss</p>
+                <p>Maxime Lust</p>
+                <p>Leïly Coquard-Misono</p>
+                <p>Jason Nago</p>
+                <p>Safiya Seddiki</p>
             </div>
         </div>
         <div class="logo">
