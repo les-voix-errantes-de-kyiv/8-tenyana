@@ -1,29 +1,29 @@
 /**
  * --------------------------------------------------------------------------------------------------------------
- *                                                  DEDICATED VARIABLES 
+ *                                                  DEDICATED VARIABLES
 /**/
 
 // ------------- * Main Font library * -------------
 
 @font-face {
     font-family: "LexendDeca-Regular";
-    src: url('fonts/lexend-deca-font-family/LexendDeca-Regular.ttf') format('truetype');
+    src: url('/fonts/lexend-deca-font-family/LexendDeca-Regular.ttf') format('truetype');
     font-display: swap;
     font-weight: 400;
     font-style: normal;
   }
-  
+
   @font-face {
     font-family: "LexendDeca-Medium";
-    src: url('fonts/lexend-deca-font-family/LexendDeca-Medium.ttf') format('truetype');
+    src: url('/fonts/lexend-deca-font-family/LexendDeca-Medium.ttf') format('truetype');
     font-display: swap;
     font-weight: 500;
     font-style: normal;
   }
-  
+
   @font-face {
     font-family: "LexendDeca-SemiBold";
-    src: url('fonts/lexend-deca-font-family/LexendDeca-SemiBold.ttf') format('truetype');
+    src: url('/fonts/lexend-deca-font-family/LexendDeca-SemiBold.ttf') format('truetype');
     font-display: swap;
     font-weight: 600;
     font-style: normal;
@@ -33,14 +33,14 @@
 
   @font-face {
     font-family: "Inria-Regular";
-    src: url('fonts/inria-font-family/Inria-Regular.ttf') format('truetype');
+    src: url('/fonts/inria-font-family/InriaSerif-Regular.ttf') format('truetype');
     font-display: swap;
     font-weight: 400;
     font-style: normal;
   }
-  
+
   // ------------- * Main Font library * -------------
-  
+
   $font-main-Regular  : "LexendDeca-Regular";
   $font-main-Medium   : "LexendDeca-Medium";
   $font-main-SemiBold   : "LexendDeca-SemiBold";
@@ -51,7 +51,7 @@
 
   /**
  * --------------------------------------------------------------------------------------------------------------
- *                                                  DEDICATED VARIABLES 
+ *                                                  DEDICATED VARIABLES
 /**/
 
 // ------------- * Devices Min / Max Screen Width * -------------
@@ -94,13 +94,13 @@ $max-desktop-burger: 1360px;
 
 // Desktops (no burger menu)
 $min-desktop-no-burger: 1361px;
-  
+
 
   /**
    * --------------------------------------------------------------------------------------------------------------
-   *                                                  DEDICATED FUNCTIONS 
+   *                                                  DEDICATED FUNCTIONS
   /**/
-    
+
   // ------------- * Breakpoints * -------------
 
   // All breakpoints function (non utilisée encore)
@@ -132,7 +132,7 @@ $min-desktop-no-burger: 1361px;
         @content;
     }
 }
- 
+
 // Small tablets and large smartphones (landscape view)
 @mixin start-smartphone-landscape {
     @media (min-width: #{$min-smartphone-landscape}) {
@@ -187,23 +187,23 @@ $min-desktop-no-burger: 1361px;
         @content;
     }
 }
-  
+
   // ------------- * Font Sizes * -------------
-  
+
   // Global referent Font Size quotient
   $font-size-quotient: 1;
-  
-  // Font Size Function 
+
+  // Font Size Function
   @function pixelsCalc($pxSize) {
-    @return ($pxSize * $font-size-quotient) + px; 
+    @return ($pxSize * $font-size-quotient) + px;
   }
-  
+
   // Font Size Function  pixel to Rem
   @function pxToRem($pxSize) {
     @return $pxSize / 10 + rem; // standard size: 10px
   }
-  
-  /* Font Size Function to create classes 
+
+  /* Font Size Function to create classes
   ex :
   .font-size-10 {
     font-size: 1rem;
@@ -217,65 +217,65 @@ $min-desktop-no-burger: 1361px;
     }
   }
   @include font-size();
-  
+
   /**
    * --------------------------------------------------------------------------------------------------------------
-   *                                                  DEDICATED CLASSES & EXTENDS 
-   *                                           Allways create both in order to be forced 
+   *                                                  DEDICATED CLASSES & EXTENDS
+   *                                           Allways create both in order to be forced
    *                                       directly on DOM or afterward in SCCS with @extend !
   /**/
-  
+
   .bold,
   %bold {
     font-weight: bold;
   }
-  
+
   .opacity-90,
   %opacity-80 {
     opacity: 0.8;
   }
-  
+
   .opacity-80,
   %opacity-80 {
     opacity: 0.8;
   }
-  
+
   .opacity-70,
   %opacity-70 {
     opacity: 0.7;
   }
-  
+
   .opacity-50,
   %opacity-50 {
     opacity: 0.5;
   }
-  
+
   .text-left,
   %text-left {
     text-align: left;
   }
-  
+
   .text-center,
   %text-center {
     text-align: center;
   }
-  
+
   .uppercase,
   %uppercase {
     text-transform: uppercase;
   }
-  
+
   .capitalize {
     text-transform: capitalize;
   }
-  
+
   /**
    * --------------------------------------------------------------------------------------------------------------
    *                                                  ELEMENTS APPLICATIONS
   /**/
-  
+
   // -------------- * Primary Font Families * --------------
-  
+
   h1 {
     font-family: $font-main-SemiBold;
     font-weight: 600;
@@ -285,15 +285,15 @@ $min-desktop-no-burger: 1361px;
     font-family: $font-main-Medium;
     font-weight: 500;
   }
-  
+
   * {
     font-family: $font-main-Regular;
     font-weight: 400;
     margin: 0;
   }
-  
+
   // -------------- * Font Sizes * --------------
-  
+
   h1 {
     font-size: pixelsCalc(60);
     @include end-tablet {
