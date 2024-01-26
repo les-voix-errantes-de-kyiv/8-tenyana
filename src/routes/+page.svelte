@@ -49,7 +49,6 @@
         loadModel()
         createScene(canvas)
     })
-    $: console.log(isHomePage)
 </script>
 <div class="background">
 <!--    <div class="header">-->
