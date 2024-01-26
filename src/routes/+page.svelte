@@ -51,9 +51,7 @@
     })
 </script>
 <div class="background">
-<!--    <div class="header">-->
-<!--        <Header isHomePage={isHomePage}/>-->
-<!--    </div>-->
+    <Header isHomePage={isHomePage}/>
     <div class="title">
         <Title isHomePage={isHomePage}/>
     </div>
@@ -72,15 +70,6 @@
                     <label>A propos</label>
                 </a>
             </div>
-        </div>
-        <div class="homepageLinks uppercase">
-            <a href="/">
-                <label>Soutenir</label>
-            </a>
-            <label>-</label>
-            <a href="/about">
-                <label>À propos</label>
-            </a>
         </div>
     {:else }
         <div class="card">

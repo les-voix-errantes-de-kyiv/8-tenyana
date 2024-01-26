@@ -11,7 +11,85 @@
     min-height: 100vh;
     overflow: hidden;
     .header {
-
+        position: absolute;
+        width: 100%;
+        #openBtn {
+            display: flex;
+            justify-content: flex-end;
+            .burger-icon {
+                margin: 24px;
+                z-index: 10;
+                &.active {
+                    span {
+                        background-color: $color-blue;
+                        &:nth-child(1) {
+                            transform: translateY(9px) rotate(45deg);
+                            transition: all 0.3s ease-out;
+                        }
+                        &:nth-child(2) {
+                            opacity: 0;
+                            transition: all 0.3s ease-out;
+                        }
+                        &:nth-child(3) {
+                            transform: translateY(-9px) rotate(-45deg);
+                            transition: all 0.3s ease-out;
+                        }
+                    }
+                }
+                span {
+                    display: block;
+                    width: 24px;
+                    height: 3px;
+                    background-color: $color-white;
+                    margin: 6px 0;
+                    border-radius: 25px;
+                    &:nth-child(1) {
+                        transform: translateY(0px) rotate(0deg);
+                        transition: all 0.3s ease-out;
+                    }
+                    &:nth-child(2) {
+                        opacity: 1;
+                        transition: all 0.3s ease-out;
+                    }
+                    &:nth-child(3) {
+                        transform: translateY(0px) rotate(0deg);
+                        transition: all 0.3s ease-out;
+                    }
+                }
+            }
+        }
+        nav {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 24px;
+            height: 100%;
+            width: 100%;
+            position: fixed;
+            z-index: 1;
+            top: 0;
+            right: -100%;
+            background-color: $color-beige;
+            opacity: 0.9;
+            transition: right 0.5s ease;
+            &.active {
+                right: 0;
+            }
+            a {
+                font-weight: 600;
+                text-decoration: none;
+                color: $color-blue;
+                display: block;
+                transition: 0.3s;
+                &.uppercase {
+                    display: flex;
+                    align-items: center;
+                    gap: 6px;
+                    opacity: 1;
+                }
+            }
+        }
     }
     .primaryButton{
         position: absolute;
