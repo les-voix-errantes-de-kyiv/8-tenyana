@@ -2,23 +2,27 @@
     import '$lib/styles/colors.scss';
     import '$lib/styles/fonts.scss';
     import '$lib/styles/aboutPage.scss'
-    import {onMount} from "svelte";
+    import {onDestroy, onMount} from "svelte";
     import {createAboutScene} from "$lib/three";
-    import { loadModel} from "$lib/functions";
+    import {loadModel, removeIslandFromScene} from "$lib/functions";
+    import Header from "$lib/components/Header.svelte";
 
 
     let canvas: HTMLCanvasElement;
 
     onMount(() => {
         createAboutScene(canvas);
-        loadModel()
+        loadModel(true);
     })
+    // onDestroy(() => {
+    //     removeIslandFromScene()
+    // })
 
 </script>
 <div class="container">
-    <div class="title">
-        <!-- <Title isHomePage={false}/> -->
-    </div>
+<!--    <div class="title">-->
+        <Header isHomePage={false}/>
+<!--    </div>-->
     <div class="text">
         <h2 class="uppercase">À propos</h2>
         <p>D’après la véritable histoire de Tetyana, une femme forte et indépendante, qui a subi un parcours migratoire déchirant, quittant son mari et sa mère, pour assurer un futur plus stable à son fils.</p>

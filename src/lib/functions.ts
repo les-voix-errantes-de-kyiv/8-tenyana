@@ -1,4 +1,4 @@
-import { Mesh, type WebGLRenderer } from 'three';
+import { type WebGLRenderer } from 'three';
 import {
 	sceneStore,
 	cameraStore,
@@ -13,11 +13,16 @@ import {
 	plateformeMeshStore3,
 	plateformeMeshStore4,
 	spotLightStore,
-	dracoLoaderStore
+	dracoLoaderStore,
+	aboutSceneStore,
+	aboutIslandMeshStore,
+	aboutIslandMeshGroupStore,
+	aboutPlateformeMeshStore1,
+	aboutPlateformeMeshStore2,
+	aboutPlateformeMeshStore3,
+	aboutPlateformeMeshStore4
 } from '$lib/stores';
 import { get } from 'svelte/store';
-import type { GLTF } from 'three/examples/jsm/loaders/GLTFLoader.js';
-import { DRACOLoader } from 'three/examples/jsm/loaders/DRACOLoader.js';
 import gsap from 'gsap';
 import * as THREE from 'three';
 
@@ -33,8 +38,20 @@ const plateformeMesh4 = get(plateformeMeshStore4);
 const islandAndSceneGroup = get(islandAndSceneGroupStore);
 const sceneContent = get(scenesContentStore);
 
-export const initCameraScene = () => {
+const aboutScene = get(aboutSceneStore);
+const aboutIslandMesh = get(aboutIslandMeshStore);
+const aboutIslandMeshGroup = get(aboutIslandMeshGroupStore);
+const aboutPlateformeMesh1 = get(aboutPlateformeMeshStore1);
+const aboutPlateformeMesh2 = get(aboutPlateformeMeshStore2);
+const aboutPlateformeMesh3 = get(aboutPlateformeMeshStore3);
+const aboutPlateformeMesh4 = get(aboutPlateformeMeshStore4);
+
+export const initCameraScene = (isAboutScene: boolean) => {
 	camera.position.set(32, 13, -3);
+	if (isAboutScene) {
+		camera.lookAt(aboutIslandMesh.position);
+		return;
+	}
 	camera.lookAt(islandMesh.position);
 };
 
@@ -49,98 +66,77 @@ export function resize(renderer: WebGLRenderer) {
 	camera.updateProjectionMatrix();
 }
 
-export function initObjectScene() {
+export function initObjectScene(isAboutPage: boolean) {
+	if (isAboutPage) {
+		aboutScene.add(ambientLight);
+		aboutScene.add(spotLight);
+		initCameraScene(isAboutPage);
+		return;
+	}
 	scene.add(ambientLight);
 	scene.add(spotLight);
-	initCameraScene();
+	initCameraScene(isAboutPage);
 }
 
-export function loadModel() {
+export function loadModel(isAboutPage: boolean) {
 	const gltfLoader = get(gltfLoaderStore);
 	const dracoLoader = get(dracoLoaderStore);
 	dracoLoader.setDecoderPath('/draco/');
 	dracoLoader.preload();
 	gltfLoader.setDRACOLoader(dracoLoader);
 
-	gltfLoader.load(
-		'/assets/Island.glb',
-
-		(gltf) => {
-			const sceneGLTF = gltf.scene;
+	gltfLoader.load('/assets/Island.glb', (gltf) => {
+		const sceneGLTF = gltf.scene;
+		if (isAboutPage) {
+			aboutIslandMesh.add(sceneGLTF);
+		} else {
 			islandMesh.add(sceneGLTF);
-		},
-
-		function (xhr) {
-			console.log((xhr.loaded / xhr.total) * 100 + '% loaded');
-		},
-		function (error) {
-			console.log('An error happened :', error);
 		}
-	);
-	gltfLoader.load(
-		'/assets/Plateforme_1.glb',
-
-		(gltf) => {
-			const sceneGLTF = gltf.scene;
+	});
+	gltfLoader.load('/assets/Plateforme_1.glb', (gltf) => {
+		const sceneGLTF = gltf.scene;
+		if (isAboutPage) {
+			aboutPlateformeMesh1.add(sceneGLTF);
+		} else {
 			plateformeMesh1.add(sceneGLTF);
-		},
-
-		function (xhr) {
-			console.log((xhr.loaded / xhr.total) * 100 + '% loaded');
-		},
-		function (error) {
-			console.log('An error happened :', error);
 		}
-	);
-	gltfLoader.load(
-		'/assets/Plateforme_2.glb',
-
-		(gltf) => {
-			const sceneGLTF = gltf.scene;
+	});
+	gltfLoader.load('/assets/Plateforme_2.glb', (gltf) => {
+		const sceneGLTF = gltf.scene;
+		if (isAboutPage) {
+			aboutPlateformeMesh2.add(sceneGLTF);
+		} else {
 			plateformeMesh2.add(sceneGLTF);
-		},
-
-		function (xhr) {
-			console.log((xhr.loaded / xhr.total) * 100 + '% loaded');
-		},
-		function (error) {
-			console.log('An error happened :', error);
 		}
-	);
-	gltfLoader.load(
-		'assets/Plateforme_3.glb',
-
-		(gltf) => {
-			const sceneGLTF = gltf.scene;
+	});
+	gltfLoader.load('assets/Plateforme_3.glb', (gltf) => {
+		const sceneGLTF = gltf.scene;
+		if (isAboutPage) {
+			aboutPlateformeMesh3.add(sceneGLTF);
+		} else {
 			plateformeMesh3.add(sceneGLTF);
-		},
-
-		function (xhr) {
-			console.log((xhr.loaded / xhr.total) * 100 + '% loaded');
-		},
-		function (error) {
-			console.log('An error happened :', error);
 		}
-	);
-	gltfLoader.load(
-		'/assets/Plateforme_4.glb',
-
-		(gltf) => {
-			const sceneGLTF = gltf.scene;
+	});
+	gltfLoader.load('/assets/Plateforme_4.glb', (gltf) => {
+		const sceneGLTF = gltf.scene;
+		if (isAboutPage) {
+			aboutPlateformeMesh4.add(sceneGLTF);
+		} else {
 			plateformeMesh4.add(sceneGLTF);
-		},
-
-		function (xhr) {
-			console.log((xhr.loaded / xhr.total) * 100 + '% loaded');
-		},
-		function (error) {
-			console.log('An error happened :', error);
 		}
-	);
-	// return gltfLoader.loadAsync(url);
+	});
 }
 
-export function makeGroup() {
+export function makeGroup(isAboutPage: boolean) {
+	if (isAboutPage) {
+		aboutIslandMeshGroup.add(aboutIslandMesh);
+		aboutIslandMeshGroup.add(aboutPlateformeMesh1);
+		aboutIslandMeshGroup.add(aboutPlateformeMesh2);
+		aboutIslandMeshGroup.add(aboutPlateformeMesh3);
+		aboutIslandMeshGroup.add(aboutPlateformeMesh4);
+		aboutScene.add(aboutIslandMeshGroup);
+		return;
+	}
 	islandAndSceneGroup.add(islandMesh);
 	islandAndSceneGroup.add(plateformeMesh1);
 	islandAndSceneGroup.add(plateformeMesh2);
@@ -220,4 +216,13 @@ function onPressLeft() {
 		return;
 	}
 	currentSceneIndexStore.update((index) => index - 1);
+}
+
+export function removeIslandFromScene() {
+	islandMesh.removeFromParent();
+	plateformeMesh1.removeFromParent();
+	plateformeMesh2.removeFromParent();
+	plateformeMesh3.removeFromParent();
+	plateformeMesh4.removeFromParent();
+	islandAndSceneGroup.removeFromParent();
 }
